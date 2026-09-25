@@ -27,18 +27,10 @@
       <!-- 배경 패턴 -->
       <div class="bg-pattern" aria-hidden="true"></div>
 
-      <!-- 배경 장면: 책상 사진 + 모니터 클로즈업 + 전화기 + 핑크 톤 오버레이 -->
-      <div class="scene">
-        <div class="scene-desk">
-          <img src="images/components/desk-scene.png" alt="" />
-        </div>
-        <div class="scene-monitor">
-          <img src="images/components/monitor-closeup.png" alt="" />
-        </div>
-        <div class="scene-phone">
-          <img src="images/components/phone.png" alt="전화기" />
-        </div>
-        <div class="scene-tint"></div>
+      <!-- 배경 장면 (Figma 레이어 순서 그대로): 핑크 톤 오버레이 -> 책상 사진 -->
+      <div class="scene-tint" aria-hidden="true"></div>
+      <div class="scene-desk" aria-hidden="true">
+        <img src="images/components/desk-scene.png" alt="" />
       </div>
 
       <!-- 상단 멘트바 -->
@@ -121,29 +113,39 @@
         />
       </div>
 
-      <!-- 오브제 3개: 초록 박스는 임시 자리표시. 실제 사진은 나중에 교체.
-           각각 누르면 설명 팝업이 뜬다 -->
+      <!-- 구성품 오브제 4개 (Figma 개별 이미지). 프로그램북/모니터/매뉴얼북은 누르면 설명 팝업, 전화기는 안내음성 팝업 -->
       <button
         type="button"
-        class="component-object"
-        data-component="1"
-        style="left: 375.81px; top: 417.94px; width: 242.68px; height: 335.5px"
-        aria-label="구성품 1 설명 보기"
-      ></button>
-      <button
-        type="button"
-        class="component-object"
+        class="component-object component-object--programbook"
         data-component="2"
-        style="left: 110.02px; top: 729.82px; width: 265.52px; height: 151.58px"
-        aria-label="구성품 2 설명 보기"
-      ></button>
+        aria-label="프로그램 북 설명 보기"
+      >
+        <img src="images/components/programbook.png" alt="" />
+      </button>
       <button
         type="button"
-        class="component-object"
+        class="component-object component-object--monitor"
         data-component="3"
-        style="left: 1302.13px; top: 205.1px; width: 231.38px; height: 212.83px"
-        aria-label="구성품 3 설명 보기"
-      ></button>
+        aria-label="모니터 설명 보기"
+      >
+        <img src="images/components/monitor.png" alt="" />
+      </button>
+      <button
+        type="button"
+        class="component-object component-object--manualbook"
+        data-component="1"
+        aria-label="매뉴얼 북 설명 보기"
+      >
+        <img src="images/components/manualbook.png" alt="" />
+      </button>
+      <button
+        type="button"
+        class="component-object component-object--call"
+        id="callObject"
+        aria-label="전화기 안내음성 듣기"
+      >
+        <img src="images/components/call.png" alt="" />
+      </button>
 
       <!-- 구성품 설명 팝업: 매뉴얼 북 실제 내용 있음, 나머지 2개는 아직 준비 중 -->
       <div
@@ -159,6 +161,55 @@
             </button>
           </div>
           <p class="manual-modal-desc" id="componentModalDesc"></p>
+        </div>
+      </div>
+
+      <!-- 분홍색 책(가이드 북) 클릭 시: 어두운 배경 + 책 확대 이미지 + 설명 팝업 (Figma 그대로) -->
+      <div
+        class="product-modal-overlay guide-modal-overlay"
+        id="guideModalOverlay"
+        aria-hidden="true"
+      >
+        <div class="guide-modal-book">
+          <img src="images/components/guide-book-open.png" alt="" />
+        </div>
+        <div class="guide-modal-box">
+          <div class="manual-modal-topbar">
+            <span>ARM CANDY PROGRAM 가이드 북</span>
+            <button type="button" class="manual-modal-close" aria-label="닫기">
+              <img src="images/shop/product-modal-close.svg" alt="" />
+            </button>
+          </div>
+          <p class="manual-modal-desc">
+            ARM CANDY PROGRAM™의 구조와 운영 체계를 소개하는 공식 프로그램
+            가이드북이다. 프로그램의 철학과 교정 과정, 프로그램에 관한 설명 등
+            ARM CANDY PROGRAM™의 관한 전반적인 설명이 담겨있다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 파스텔 노트 묶음(매뉴얼 북) 클릭 시: 어두운 배경 + 노트 확대 이미지 + 설명 팝업 (Figma 그대로) -->
+      <div
+        class="product-modal-overlay guide-modal-overlay"
+        id="manualModalOverlay"
+        aria-hidden="true"
+      >
+        <div class="manual-book-image">
+          <img src="images/components/manual-book-open.png" alt="" />
+        </div>
+        <div class="manual-book-box">
+          <div class="manual-modal-topbar">
+            <span>ARM CANDY PROGRAM 매뉴얼 북</span>
+            <button type="button" class="manual-modal-close" aria-label="닫기">
+              <img src="images/shop/product-modal-close.svg" alt="" />
+            </button>
+          </div>
+          <p class="manual-modal-desc">
+            교정 대상자가 4주간 프로그램을 수행하기 위해 사용하는 교정 매뉴얼
+            북이다. 각 유형별 교정 목표와 주차별 행동 지침 등을 수록하여
+            대상자가 스스로 자신의 행동과 외형을 점검하고 프로그램을 단계적으로
+            수행할 수 있도록 구성되어 있다.
+          </p>
         </div>
       </div>
 
@@ -212,24 +263,25 @@
       const componentModalTitle = document.getElementById('componentModalTitle');
       const componentModalDesc = document.getElementById('componentModalDesc');
 
-      // 실제 내용이 있는 구성품만 채워두고, 나머지는 준비 중 문구를 보여준다.
-      const componentContent = {
-        1: {
-          title: '매뉴얼 북',
-          desc: '교정 대상자가 4주간 프로그램을 수행하기 위해 사용하는 교정 매뉴얼 북이다. 각 유형별 교정 목표와 주차별 행동 지침 등을 수록하여 대상자가 스스로 자신의 행동과 외형을 점검하고 프로그램을 단계적으로 수행할 수 있도록 구성되어 있다.',
-        },
-      };
-
-      document.querySelectorAll('.component-object').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const content = componentContent[btn.dataset.component] || {
-            title: '준비 중',
-            desc: '아직 준비 중인 설명입니다.',
-          };
-          componentModalTitle.textContent = content.title;
-          componentModalDesc.textContent = content.desc;
-          componentModalOverlay.classList.add('is-open');
+      // 분홍색 책(프로그램 북) -> 가이드 북 팝업, 파스텔 노트(매뉴얼 북) -> 매뉴얼 북 팝업
+      function bindBigModal(triggerSelector, overlayId) {
+        const overlay = document.getElementById(overlayId);
+        document.querySelector(triggerSelector).addEventListener('click', () => {
+          overlay.classList.add('is-open');
         });
+        overlay.querySelector('.manual-modal-close').addEventListener('click', (e) => {
+          e.preventDefault();
+          overlay.classList.remove('is-open');
+        });
+      }
+      bindBigModal('.component-object--programbook', 'guideModalOverlay');
+      bindBigModal('.component-object--manualbook', 'manualModalOverlay');
+
+      // 아직 설명이 없는 구성품(모니터)은 준비 중 문구를 보여준다.
+      document.querySelector('.component-object--monitor').addEventListener('click', () => {
+        componentModalTitle.textContent = '준비 중';
+        componentModalDesc.textContent = '아직 준비 중인 설명입니다.';
+        componentModalOverlay.classList.add('is-open');
       });
 
       document
@@ -245,7 +297,7 @@
       const callVoiceModalOverlay = document.getElementById('callVoiceModalOverlay');
       const callVoiceAudio = document.getElementById('callVoiceAudio');
 
-      document.querySelector('.scene-phone').addEventListener('click', () => {
+      document.getElementById('callObject').addEventListener('click', () => {
         callVoiceModalOverlay.classList.add('is-open');
         callVoiceAudio.currentTime = 0;
         callVoiceAudio.play().catch(() => {});

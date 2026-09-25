@@ -1,0 +1,233 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.stage {
+  position: relative;
+  flex: none;
+  width: 1920px;
+  height: 1080px;
+  background: #fff;
+  overflow: hidden;
+  transform-origin: center center;
+}
+
+/* ---------- 캐비닛 배경 ---------- */
+.cabinet-bg {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  width: 1960px;
+  height: 1080px;
+  overflow: hidden;
+}
+
+.cabinet-bg img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1093px;
+  max-width: none;
+}
+
+/* ---------- 어둠 효과 ---------- */
+.dark-overlay {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 1920px;
+  height: 1105.48px;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+/* ---------- 열린 파일철 (교정 사례 파일철과 동일한 범용 그래픽 재사용) ---------- */
+.open-folder-bg {
+  position: absolute;
+  z-index: 2;
+  left: 206.05px;
+  top: -16.39px;
+  width: 1513.89px;
+  height: 1105.48px;
+}
+
+.open-folder-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.paperclip {
+  position: absolute;
+  z-index: 5;
+  left: 1091.6px;
+  top: 61.98px;
+  width: 19.81px;
+  height: 72.17px;
+}
+
+/* ---------- 인덱스 탭 (Figma "성녀_파일"/"악녀_파일" 노드 좌표 그대로 이식,
+   기준 오프셋: stage_x = figma_x + 234.00, stage_y = figma_y + 61.50) ----------
+   고정 탭: 어느 페이지에서 보든 항상 같은 자리 (Figma "4p", 처벌강제 도형 재사용).
+   라벨은 항상 "악녀" (Figma 원본 그대로) */
+.index-tab--fixed {
+  position: absolute;
+  z-index: 3;
+  left: 989.3px;
+  top: 79.33px;
+  width: 648.22px;
+  height: 899.85px;
+  pointer-events: none;
+}
+
+.index-tab--fixed img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 이동 탭: 성녀 페이지에서는 고정 탭 바로 옆(거의 같은 자리)에 살짝 겹쳐 보이고,
+   악녀 페이지에서는 왼쪽으로 밀려남 (Figma "2p" 안의 의학적치료 도형 재사용) */
+.index-tab--roaming {
+  position: absolute;
+  z-index: 3;
+  width: 642.54px;
+  height: 896.15px;
+  pointer-events: none;
+}
+
+.index-tab--roaming img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.index-tab--roaming-near {
+  left: 989.3px;
+  top: 81.18px;
+}
+
+.index-tab--roaming-far {
+  left: 945.54px;
+  top: 93.03px;
+}
+
+/* ---------- 인덱스 라벨 ---------- */
+.index-label {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.index-label span {
+  display: block;
+  transform: rotate(-90deg);
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #000;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.index-label:hover span {
+  color: #888;
+}
+
+/* 악녀 라벨: 고정 탭 위, 어느 페이지에서든 항상 같은 자리 */
+.index-label--villain {
+  left: 1594.33px;
+  top: 852.34px;
+  width: 37.223px;
+  height: 106.32px;
+}
+
+/* 성녀 라벨: 성녀 페이지에서는 고정 탭 옆(오른쪽)에, 악녀 페이지에서는 화면 왼쪽 끝으로 이동 */
+.index-label--saint-near {
+  left: 1594.33px;
+  top: 581.15px;
+  width: 37.223px;
+  height: 109.449px;
+}
+
+.index-label--saint-far {
+  left: 303.29px;
+  top: 593px;
+  width: 37.223px;
+  height: 109.449px;
+}
+
+/* ---------- 파일 카드 2개 (임시 이미지: 실제 자료 이미지로 직접 교체하면 됨) ---------- */
+.file-card-flat-wrap {
+  position: absolute;
+  z-index: 4;
+  width: 459px;
+  height: 809px;
+  filter: drop-shadow(4px 4px 3px rgba(0, 0, 0, 0.18));
+  pointer-events: none;
+}
+
+.file-card-flat {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.file-card-flat-wrap--1 {
+  left: 383px;
+  top: 113px;
+  transform: rotate(-2deg);
+}
+
+.file-card-flat-wrap--2 {
+  left: 1051px;
+  top: 104px;
+  transform: rotate(1deg);
+}
+
+/* ---------- 페이지 넘기기: 카드 이미지에 찍힌 "이전 장"/"다음 장" 글자 위에 얹는
+   투명 클릭 영역. wrap이 이미 회전돼 있으므로 그 안의 로컬 좌표(카드 자체 기준)로
+   두면 회전과 함께 따라간다. (folder-women-punishment와 동일한 방식) */
+.page-turn {
+  position: absolute;
+  top: 760px;
+  width: 70px;
+  height: 40px;
+  pointer-events: auto;
+}
+
+.page-turn--prev {
+  left: 10px;
+}
+
+.page-turn--next {
+  left: 380px;
+}

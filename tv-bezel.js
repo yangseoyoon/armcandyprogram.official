@@ -50,6 +50,26 @@
       yScale = frameH / stageHeight;
     }
 
+    // 한 화면 고정 페이지에서 창이 세로로 길면 콘텐츠가 늘어나지 않도록
+    // 가로/세로 스케일을 같게 맞추고, 남는 공간은 위아래 검정 여백으로 둔다.
+    if (!wasScrollable) {
+      const uniform = Math.min(xScale, yScale);
+      const fitW = 1920 * uniform;
+      const fitH = stageHeight * uniform;
+      const extraX = (contentW - fitW) / 2;
+      const extraY = (frameH - fitH) / 2;
+
+      frame.style.width = fitW + 'px';
+      frame.style.height = fitH + 'px';
+      frame.style.marginLeft = BORDER + extraX + 'px';
+      frame.style.marginRight = BORDER + extraX + 'px';
+      scaled.style.transform = 'scale(' + uniform + ')';
+      document.body.style.paddingTop = BORDER + extraY + 'px';
+      document.body.style.paddingBottom = BORDER + extraY + 'px';
+      document.body.style.height = vh + 'px';
+      return;
+    }
+
     frame.style.width = contentW + 'px';
     frame.style.height = frameH + 'px';
     frame.style.marginLeft = BORDER + 'px';
@@ -62,7 +82,7 @@
     // (box-sizing: border-box라 padding은 body 자신의 height 안에서 소비된다)
     document.body.style.paddingTop = BORDER + 'px';
     document.body.style.paddingBottom = BORDER + 'px';
-    document.body.style.height = (wasScrollable ? frameH + BORDER * 2 : vh) + 'px';
+    document.body.style.height = frameH + BORDER * 2 + 'px';
   }
 
   applyBezel();

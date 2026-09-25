@@ -61,10 +61,30 @@ body {
   cursor: pointer;
 }
 
+/* ---------- 인덱스 탭 이미지 2개 (교정 사례 파일철의 tab-body-mod/tab-drug-chem 재사용).
+   이 파일철 표지(745.5px)가 교정 사례 표지(671.35px)보다 넓어서, 탭 전체를
+   74.15px 오른쪽으로 옮겨 표지 뒤에 가려지고 노치만 동일한 폭으로 노출되게 함 ---------- */
+.index-tab {
+  position: absolute;
+  z-index: 2;
+  left: 679.54px;
+  top: 95.3px;
+  width: 648.22px;
+  height: 899.85px;
+  pointer-events: none;
+}
+
+.index-tab img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* ---------- 파일철 표지 ---------- */
 .folder-front {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   left: 607.25px;
   top: 53.6px;
   width: 745.5px;
@@ -79,20 +99,17 @@ body {
   object-fit: contain;
 }
 
-/* ---------- 인덱스 탭 2개 (임시 구현: 실제 탭 이미지/문구는 나중에 교체) ---------- */
+/* ---------- 인덱스 라벨 2개: 성녀 / 악녀 ---------- */
 .index-label {
   position: absolute;
-  z-index: 3;
-  left: 1362.75px;
-  width: 32px;
+  z-index: 4;
+  left: 1294.63px;
+  width: 17.223px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   text-decoration: none;
-  background: #efefef;
-  border: 1px solid #000;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
 }
 
 .index-label span {
@@ -100,7 +117,7 @@ body {
   transform: rotate(-90deg);
   font-family: 'Pretendard', sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 15px;
   color: #000;
   white-space: nowrap;
   transition: color 0.15s ease;
@@ -110,11 +127,11 @@ body {
   color: #888;
 }
 
-.index-label--1 {
-  top: 320px;
-  height: 160px;
+.index-label--saint {
+  top: 489.16px;
+  height: 57.708px;
 }
-.index-label--2 {
-  top: 520px;
-  height: 160px;
+.index-label--villain {
+  top: 734.16px;
+  height: 106.457px;
 }

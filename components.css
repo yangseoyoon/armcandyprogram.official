@@ -8,7 +8,7 @@
   --card-green: #c3fbb2;
 
   --font-futura-demi: 'Futura PT Demi', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
-  --font-futura-heavy: 'Futura PT Heavy', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
+  --font-futura-heavy: 'Futura PT Demi', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
   --font-pixel: 'NeoDunggeunmo Pro', 'NeoDunggeunmoPro', monospace;
   --font-body: 'Pretendard', sans-serif;
 }
@@ -47,73 +47,32 @@ body {
   background-position: -57.4px -1333.27px;
 }
 
-/* ---------- 배경 장면: 책상 사진 + 모니터 클로즈업 + 전화기 ---------- */
-.scene {
+/* ---------- 배경 장면 (Figma 프로그램-상세구성 페이지 좌표 그대로) ---------- */
+.scene-tint {
   position: absolute;
-  z-index: 1;
+  z-index: 4;
   inset: 0;
+  background: rgba(255, 63, 183, 0.1);
+  mix-blend-mode: color;
+  pointer-events: none;
 }
 
 .scene-desk {
   position: absolute;
-  left: -4.32px;
-  top: 133.75px;
-  width: 1926.32px;
-  height: 1149.2px;
-  overflow: hidden;
+  z-index: 1;
+  left: 50%;
+  top: 124.5px;
+  width: 1919.51px;
+  height: 1082.59px;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .scene-desk img {
-  position: absolute;
-  left: 0;
-  top: -25.68%;
-  width: 100%;
-  height: 125.68%;
-  max-width: none;
-  object-fit: cover;
-}
-
-.scene-monitor {
-  position: absolute;
-  left: calc(25% + 66.95px);
-  top: 227.18px;
-  width: 957px;
-  height: 695.21px;
-  overflow: hidden;
-}
-
-.scene-monitor img {
-  position: absolute;
-  left: -57.6%;
-  top: -55.89%;
-  width: 201.29%;
-  height: 207.75%;
-  max-width: none;
-  object-fit: cover;
-}
-
-.scene-phone {
-  position: absolute;
-  left: calc(66.67% + 30.48px);
-  top: 487.23px;
-  width: 368.83px;
-  height: 295.17px;
-  cursor: pointer;
-}
-
-.scene-phone img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.scene-tint {
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 63, 183, 0.3);
-  mix-blend-mode: color;
-  pointer-events: none;
 }
 
 /* ---------- 상단 멘트바 ---------- */
@@ -263,7 +222,7 @@ body {
 /* ---------- 제목 배너 ---------- */
 .heading {
   position: absolute;
-  z-index: 2;
+  z-index: 6;
   left: 676.9px;
   top: 154px;
   width: 566.2px;
@@ -309,25 +268,32 @@ body {
 .dot-divider--left { left: 128.7px; }
 .dot-divider--right { left: 403.6px; }
 
-/* ---------- 오브제 (구성품) 클릭 영역 ----------
-   초록 박스는 실제 사진이 오기 전까지의 임시 자리표시. */
+/* ---------- 구성품 오브제 (Figma 개별 이미지, 클릭하면 팝업) ---------- */
 .component-object {
   position: absolute;
   z-index: 3;
-  background: transparent;
+  background: none;
   border: none;
   padding: 0;
   cursor: pointer;
 }
 
-.component-object:hover {
-  filter: brightness(1.08);
-  box-shadow: 0 0 30px 12px rgba(255, 255, 255, 0.85);
+.component-object img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
 }
 
-.scene-phone:hover img {
+.component-object:hover img {
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.9));
 }
+
+.component-object--programbook { left: 144.25px; top: 727.3px; width: 365.88px; height: 336.68px; }
+.component-object--monitor { left: 681.46px; top: 230.32px; width: 557.08px; height: 571.92px; }
+.component-object--manualbook { left: 1137.15px; top: 734.64px; width: 503.65px; height: 363.18px; }
+.component-object--call { left: 1328.11px; top: 479px; width: 463.28px; height: 356.24px; }
 
 /* ---------- 구성품 설명 팝업 (임시 플레이스홀더) ---------- */
 .product-modal-overlay {
@@ -370,8 +336,8 @@ body {
   left: 18.45px;
   top: 50%;
   transform: translateY(-50%);
-  font-family: var(--font-futura-heavy);
-  font-weight: 800;
+  font-family: var(--font-futura-demi);
+  font-weight: 400; /* Futura PT는 굵기별 패밀리라 weight를 또 주면 가짜 볼드가 겹친다 */
   font-size: 22px;
   color: var(--card-green);
   white-space: nowrap;
@@ -406,6 +372,76 @@ body {
   font-size: 20px;
   line-height: 44px;
   color: #000;
+}
+
+/* ---------- 분홍색 책(가이드 북) 팝업: Figma 프로그램-상세구성 페이지 (2363:524) ---------- */
+.guide-modal-overlay {
+  background: rgba(7, 7, 7, 0.7);
+}
+
+/* 확대된 책: 1099.04x820.62 이미지를 25.82도 돌려서 (562.74, 617.17)을 중심으로 배치 */
+.guide-modal-book {
+  position: absolute;
+  left: 562.74px;
+  top: 617.17px;
+  width: 1099.04px;
+  height: 820.62px;
+  transform: translate(-50%, -50%) rotate(25.82deg);
+  pointer-events: none;
+}
+
+.guide-modal-book img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.guide-modal-box {
+  position: absolute;
+  left: 783.32px;
+  top: 394.17px;
+  width: 639px;
+  height: 223px;
+  background: linear-gradient(to bottom, #fff, #e0ff9d);
+  border: 3px solid var(--ticker-bg);
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+/* ---------- 파스텔 노트(매뉴얼 북) 팝업: Figma (2363:685) ---------- */
+.manual-book-image {
+  position: absolute;
+  left: 72.07px;
+  top: 270.01px;
+  width: 911.34px;
+  height: 680.47px;
+  pointer-events: none;
+}
+
+.manual-book-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.manual-book-box {
+  position: absolute;
+  left: 788.06px;
+  top: 398.8px;
+  width: 639px;
+  height: 267px;
+  background: linear-gradient(to bottom, #fff, #e0ff9d);
+  border: 3px solid var(--ticker-bg);
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+/* 시안의 text-box-trim(줄 위아래 여백 제거) 때문에 본문이 시안보다 18px 위에 와야 같은 위치가 된다 */
+.guide-modal-box .manual-modal-desc,
+.manual-book-box .manual-modal-desc {
+  top: 64px;
 }
 
 /* ---------- 전화기 클릭 시 뜨는 안내음성 메세지 팝업 ---------- */
