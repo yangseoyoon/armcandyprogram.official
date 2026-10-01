@@ -112,7 +112,7 @@ body {
 /* ---------- 메뉴바 ---------- */
 .nav-wrap {
   position: absolute;
-  z-index: 5;
+  z-index: 7;
   left: 0;
   top: 48px;
   width: 1920px;
@@ -295,41 +295,32 @@ body {
 .component-object--manualbook { left: 1137.15px; top: 734.64px; width: 503.65px; height: 363.18px; }
 .component-object--call { left: 1328.11px; top: 479px; width: 463.28px; height: 356.24px; }
 
-/* 모니터 사진(monitor.png, 338x571.92 스케일) 안에서 화면이 차지하는 픽셀 영역을
-   직접 측정해서 그 자리에 영상을 얹는다. 클릭하면 소리와 함께 재생/정지,
-   더블클릭하면 main.html의 screen2-video와 같은 방식으로 800x600 확대 */
-.monitor-video {
+/* 모니터 클릭 시 뜨는 영상 팝업 창 (다른 팝업과 동일한 파란 타이틀바 + 흰 테두리 느낌) */
+.monitor-video-box {
   position: absolute;
-  z-index: 4;
-  left: 757px;
-  top: 342px;
-  width: 406px;
-  height: 300px;
-  object-fit: cover;
-  cursor: pointer;
-}
-
-.monitor-video.is-enlarged {
-  position: fixed;
-  z-index: 1000;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 800px;
-  height: 600px;
-  object-fit: cover;
+  background: #000;
+  border: 3px solid var(--ticker-bg);
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
 }
 
-.monitor-video-backdrop {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-}
-
-.monitor-video-backdrop.is-open {
+.monitor-video-box video {
   display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 42px;
+}
+
+.monitor-video-box .manual-modal-topbar {
+  width: 800px;
+}
+
+.monitor-video-box .manual-modal-close {
+  left: 765px;
 }
 
 /* ---------- 구성품 설명 팝업 (임시 플레이스홀더) ---------- */

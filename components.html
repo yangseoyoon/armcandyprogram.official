@@ -126,20 +126,10 @@
         type="button"
         class="component-object component-object--monitor"
         data-component="3"
-        aria-label="모니터 설명 보기"
+        aria-label="모니터 영상 보기"
       >
         <img src="images/components/monitor.png" alt="" />
       </button>
-      <!-- 모니터 화면 자리에 정확히 얹는 영상. main.html의 screen2-video와 동일한 동작
-           (클릭: 소리와 함께 재생/정지, 더블클릭: 800x600 확대) -->
-      <video
-        class="monitor-video"
-        id="monitorVideo"
-        src="images/main/screen2-video.mp4"
-        loop
-        playsinline
-        title="클릭하면 재생, 더블클릭하면 크게 보기"
-      ></video>
       <button
         type="button"
         class="component-object component-object--manualbook"
@@ -223,6 +213,28 @@
         </div>
       </div>
 
+      <!-- 모니터 클릭 시: 영상 팝업 창 -->
+      <div
+        class="product-modal-overlay"
+        id="monitorVideoModalOverlay"
+        aria-hidden="true"
+      >
+        <div class="monitor-video-box">
+          <div class="manual-modal-topbar">
+            <span>video</span>
+            <button type="button" class="manual-modal-close" aria-label="닫기">
+              <img src="images/shop/product-modal-close.svg" alt="" />
+            </button>
+          </div>
+          <video
+            id="monitorVideo"
+            src="images/main/candy-video.mp4"
+            loop
+            playsinline
+          ></video>
+        </div>
+      </div>
+
       <!-- 전화기 클릭 시: 안내음성 메세지 팝업 -->
       <div
         class="product-modal-overlay"
@@ -260,13 +272,6 @@
       </div>
     </div>
 
-    <!-- 모니터 영상 확대 배경: .stage(스케일 변환) 바깥에 둬야 800x600이 실제 화면 픽셀 기준으로 정확히 맞는다 -->
-    <div
-      class="monitor-video-backdrop"
-      id="monitorVideoBackdrop"
-      aria-hidden="true"
-    ></div>
-
     <audio id="callVoiceAudio" src="audio/call-voice.mp3" preload="auto"></audio>
 
     <script src="crt-effect.js"></script>
@@ -294,47 +299,34 @@
       bindBigModal('.component-object--programbook', 'guideModalOverlay');
       bindBigModal('.component-object--manualbook', 'manualModalOverlay');
 
-      // 모니터 화면: 클릭하면 소리와 함께 영상 재생/정지, 더블클릭하면 확대 (main.html과 동일)
+      // 모니터 클릭 -> 영상 팝업 창 (소리와 함께 재생)
+      const monitorVideoModalOverlay = document.getElementById(
+        'monitorVideoModalOverlay',
+      );
       const monitorVideo = document.getElementById('monitorVideo');
-      const monitorVideoBackdrop = document.getElementById('monitorVideoBackdrop');
-      const monitorVideoOriginalParent = monitorVideo.parentNode;
-      const monitorVideoOriginalNextSibling = monitorVideo.nextSibling;
 
-      function closeMonitorVideoEnlarged() {
-        monitorVideo.classList.remove('is-enlarged');
-        monitorVideoBackdrop.classList.remove('is-open');
-        monitorVideoOriginalParent.insertBefore(
-          monitorVideo,
-          monitorVideoOriginalNextSibling,
-        );
+      function closeMonitorVideoModal() {
+        monitorVideoModalOverlay.classList.remove('is-open');
+        monitorVideo.pause();
+        monitorVideo.currentTime = 0;
       }
 
-      monitorVideo.addEventListener('click', () => {
-        monitorVideo.muted = false;
-        monitorVideo.volume = 1;
-        if (monitorVideo.paused) {
+      document
+        .querySelector('.component-object--monitor')
+        .addEventListener('click', () => {
+          monitorVideoModalOverlay.classList.add('is-open');
+          monitorVideo.muted = false;
+          monitorVideo.volume = 1;
+          monitorVideo.currentTime = 0;
           monitorVideo.play().catch(() => {});
-        } else {
-          monitorVideo.pause();
-        }
-      });
+        });
 
-      monitorVideo.addEventListener('dblclick', () => {
-        const willEnlarge = !monitorVideo.classList.contains('is-enlarged');
-        if (willEnlarge) {
-          document.body.appendChild(monitorVideo);
-          monitorVideo.classList.add('is-enlarged');
-          monitorVideoBackdrop.classList.add('is-open');
-        } else {
-          closeMonitorVideoEnlarged();
-        }
-      });
-
-      monitorVideoBackdrop.addEventListener('click', closeMonitorVideoEnlarged);
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMonitorVideoEnlarged();
-      });
+      monitorVideoModalOverlay
+        .querySelector('.manual-modal-close')
+        .addEventListener('click', (e) => {
+          e.preventDefault();
+          closeMonitorVideoModal();
+        });
 
       document
         .querySelectorAll('#componentModalOverlay .manual-modal-close')
