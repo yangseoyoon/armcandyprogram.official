@@ -157,15 +157,15 @@ body {
 /* 이 라벨은 이 페이지에만 있는 것이라 원본 그대로(width 17.223) 사용 */
 .index-label--bodymod-left { left: 307.74px; top: 493.19px; width: 17.223px; height: 57.708px; }
 
-/* ---------- 자료 카드 좌/우 자리: 위치·각도 고정 완료 ----------
-   지금은 코르셋 이미지를 임시로 꽂아둔 상태. 실제 자료 카드 이미지가
-   오면 <img src="...">만 교체하면 됨 — left/top/rotate 값은 이미
-   확정이라 건드릴 필요 없음. */
+/* ---------- 자료 카드 좌/우 자리: 처녀성 검사 / 전염병 예방법 ----------
+   Figma 611x878 카드를 2x로 통짜 내보낸 이미지라 교정 사례 카드와 같은 설정.
+   이전에 임시 코르셋 이미지(641x908 박스를 12.5px/18.5px 잘라서 보이던 구조)로
+   확정해둔 화면상 위치를 그대로 유지하려고, 잘려서 보이던 시작점(+12.5px)으로 left/top을 옮겼다. */
 .file-card-flat-wrap {
   position: absolute;
   z-index: 4;
-  width: 641px;
-  height: 908px;
+  width: 611px;
+  height: 878px;
   filter: drop-shadow(4px 4px 3px rgba(0, 0, 0, 0.18));
   pointer-events: none;
 }
@@ -174,17 +174,48 @@ body {
   display: block;
   width: 100%;
   height: 100%;
-  clip-path: inset(12.5px 18.5px 18.5px 12.5px);
 }
 
-.file-card-flat-wrap--placeholder-left {
-  left: 333px;
-  top: 113px;
+.file-card-flat-wrap--virginity {
+  left: 345.5px;
+  top: 125.5px;
   transform: rotate(-2deg);
 }
 
-.file-card-flat-wrap--placeholder-right {
-  left: 971px;
-  top: 84px;
+.file-card-flat-wrap--contagious {
+  left: 983.5px;
+  top: 96.5px;
   transform: rotate(1deg);
+}
+
+/* 2페이지: 히스테릭 치료 / 여성의 광기 (1페이지 카드와 같은 자리) */
+.file-card-flat-wrap--hysteria {
+  left: 345.5px;
+  top: 125.5px;
+  transform: rotate(-2deg);
+}
+
+.file-card-flat-wrap--madness {
+  left: 983.5px;
+  top: 96.5px;
+  transform: rotate(1deg);
+}
+
+/* 카드 이미지에 찍힌 "이전 장"/"다음 장" 글자 위에 얹는 투명 클릭 영역.
+   wrap이 이미 회전돼 있으므로 그 안의 로컬 좌표(카드 자체 기준)로 두면
+   회전과 함께 따라간다. */
+.page-turn {
+  position: absolute;
+  top: 838.5px;
+  width: 66px;
+  height: 40px;
+  pointer-events: auto;
+}
+
+.page-turn--prev {
+  left: 10px;
+}
+
+.page-turn--next {
+  left: 535px;
 }
