@@ -1,0 +1,15 @@
+/* 사이트 전체 마우스 커서: Figma 사탕 커서(2444:2813).
+   hover·텍스트 입력 등 개별 cursor 지정(pointer, text 등)까지 모두 같은
+   사탕으로 덮어쓰려고 전체 요소에 !important로 건다.
+   (이미지를 바꾸면 ?v= 숫자도 올릴 것: 브라우저가 커서 이미지를 오래 캐시한다)
+   표시 크기 45x26(hotspot은 사탕 중앙), 고해상도 화면용 2x 이미지 포함. */
+html,
+html * {
+  cursor: url('images/cursor/cursor.png?v=3') 22 13, auto !important;
+  cursor: -webkit-image-set(
+      url('images/cursor/cursor.png?v=3') 1x,
+      url('images/cursor/cursor@2x.png?v=3') 2x
+    )
+    22 13,
+    auto !important;
+}
