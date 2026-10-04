@@ -189,13 +189,15 @@ body {
 }
 
 /* 2페이지: 히스테릭 치료 / 여성의 광기 (1페이지 카드와 같은 자리) */
-.file-card-flat-wrap--hysteria {
+.file-card-flat-wrap--hysteria,
+.file-card-flat-wrap--highereducation {
   left: 345.5px;
   top: 125.5px;
   transform: rotate(-2deg);
 }
 
-.file-card-flat-wrap--madness {
+.file-card-flat-wrap--madness,
+.file-card-flat-wrap--sterilization {
   left: 983.5px;
   top: 96.5px;
   transform: rotate(1deg);

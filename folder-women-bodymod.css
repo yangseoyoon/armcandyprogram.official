@@ -188,14 +188,35 @@ body {
   clip-path: inset(12.5px 18.5px 18.5px 12.5px);
 }
 
-.file-card-flat-wrap--corset {
+.file-card-flat-wrap--corset,
+.file-card-flat-wrap--fgm {
   left: 333px;
   top: 113px;
   transform: rotate(-2deg);
 }
 
-.file-card-flat-wrap--footbinding {
+.file-card-flat-wrap--footbinding,
+.file-card-flat-wrap--breastironing {
   left: 971px;
   top: 84px;
   transform: rotate(1deg);
+}
+
+/* 카드 이미지에 찍힌 "이전 장"/"다음 장" 글자 위에 얹는 투명 클릭 영역.
+   wrap(641x908) 안의 카드는 clip-path로 잘린 만큼(12.5px) 안쪽에서 시작하므로
+   611x878 카드 기준 좌표(top 838.5, prev 10, next 535)에 12.5px씩 더한 값. */
+.page-turn {
+  position: absolute;
+  top: 851px;
+  width: 66px;
+  height: 40px;
+  pointer-events: auto;
+}
+
+.page-turn--prev {
+  left: 22.5px;
+}
+
+.page-turn--next {
+  left: 547.5px;
 }

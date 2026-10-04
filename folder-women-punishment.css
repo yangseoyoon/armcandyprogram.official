@@ -210,13 +210,19 @@ clip-path 크롭이 필요 없다. clip-path와 filter(drop-shadow)를 같은요
   height: 100%;
 }
 
-.file-card-flat-wrap--scoldsbridle {
+.file-card-flat-wrap--scoldsbridle,
+.file-card-flat-wrap--magdalene,
+.file-card-flat-wrap--honorkilling,
+.file-card-flat-wrap--lebensborn {
   left: 333px;
   top: 113px;
   transform: rotate(-2deg);
 }
 
-.file-card-flat-wrap--duckingstool {
+.file-card-flat-wrap--duckingstool,
+.file-card-flat-wrap--chhaupadi,
+.file-card-flat-wrap--chastity,
+.file-card-flat-wrap--chartres {
   left: 971px;
   top: 84px;
   transform: rotate(1deg);
