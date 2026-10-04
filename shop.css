@@ -296,6 +296,22 @@ body {
   object-fit: cover;
 }
 
+/* 바비 보톡스: 팝업과 같은 각도(-132.35도)로 돌린 투명 원본을 357x358 박스 가운데에 둔다 (Figma 2111:326) */
+.product--botox {
+  pointer-events: none;
+}
+
+.product--botox img {
+  pointer-events: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 207.7px;
+  height: 293.7px;
+  object-fit: cover;
+  transform: translate(-50%, -50%) rotate(-132.35deg);
+}
+
 .product-crop {
   position: relative;
   width: 100%;
@@ -754,16 +770,120 @@ body {
   height: 100%;
 }
 
-.product-modal-photo--botox {
-  left: 344.77px;
-  top: 15px;
-  width: 353px;
-  height: 500px;
+.product-modal-photo--laudanum {
+  left: 353px;
+  top: 53.46px;
+  width: 408.24px;
+  height: 408.24px;
   transform: none;
 }
-.product-modal-photo--botox img {
+.product-modal-photo--laudanum img {
   top: 0;
   height: 100%;
+}
+
+/* 비소: 2480x3507 세로 원본에서 알약 부분만 보이도록 잘라서 쓴다 (Figma 2428:953, 팝업/선반 동일 비율) */
+.product-modal-photo--arsenic {
+  left: 293.01px;
+  top: 192.47px;
+  width: 424.66px;
+  height: 300.55px;
+  transform: none;
+}
+.product-modal-photo--arsenic img {
+  left: 0;
+  top: -51.37%;
+  width: 100%;
+  height: 199.81%;
+}
+
+.product--arsenic {
+  overflow: hidden;
+}
+.product--arsenic img {
+  position: absolute;
+  left: 0;
+  top: -51.37%;
+  width: 100%;
+  height: 199.81%;
+  max-width: none;
+  object-fit: cover;
+}
+
+.product-modal-photo--nicotine {
+  left: 280.92px;
+  top: 69.32px;
+  width: 587.84px;
+  height: 415.94px;
+  transform: none;
+}
+.product-modal-photo--nicotine img {
+  top: 0;
+  height: 100%;
+}
+
+/* "TUNED 강력 추천" 스티커 (Figma Group 208 + Group 215):
+   별 모양 배경은 그림자가 바깥으로 번져서 SVG 원본 크기(223.15x156.91)로 박스(617.25, 91.65) 기준 살짝 밖으로 둔다 */
+.nicotine-sticker {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.nicotine-sticker img {
+  position: absolute;
+  display: block;
+  max-width: none;
+}
+.nicotine-sticker-burst {
+  left: 614.26px;
+  top: 89.78px;
+  width: 223.15px;
+  height: 156.91px;
+}
+.nicotine-sticker-text--front {
+  left: 680.3px;
+  top: 142.46px;
+  width: 86.43px;
+  height: 49.32px;
+}
+.nicotine-sticker-text--shadow {
+  left: 681.43px;
+  top: 143.94px;
+  width: 86.43px;
+  height: 49.32px;
+}
+
+.product-modal-photo--teeth {
+  left: 303.73px;
+  top: 161.09px;
+  width: 456.98px;
+  height: 342.74px;
+  transform: none;
+}
+.product-modal-photo--teeth img {
+  top: 0;
+  height: 100%;
+}
+
+/* 바비 보톡스: 375.52x531.02 주사기 이미지를 -132.35도 돌려서 645.42x635.25 박스 한가운데에 둔다 (Figma 2111:324) */
+.product-modal-photo--barbie-botox {
+  left: 215.2px;
+  top: -15.24px;
+  width: 645.42px;
+  height: 635.25px;
+  transform: none;
+  overflow: visible;
+}
+.product-modal-photo--barbie-botox img {
+  left: 50%;
+  top: 50%;
+  width: 375.52px;
+  height: 531.02px;
+  transform: translate(-50%, -50%) rotate(-132.35deg);
 }
 
 .bridle-best-sticker {
