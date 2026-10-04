@@ -33,7 +33,7 @@ body {
 .stage {
   position: relative;
   width: 1920px;
-  height: 5622.22px;
+  height: 6568px;
   background: linear-gradient(to bottom, var(--pink-top), var(--pink-bottom));
   overflow: hidden;
   font-family: var(--font-body);
@@ -54,7 +54,7 @@ body {
   position: absolute;
   z-index: 0;
   left: 0;
-  top: 0;
+  top: 129.72px; /* Figma Rectangle 387 위치 */
   width: 1920px;
   height: 937.41px;
   background: linear-gradient(to bottom, #ff0ea5 0%, rgba(255, 14, 165, 0) 75.48%);
@@ -203,8 +203,7 @@ body {
 }
 
 .nav-dropdown-col--about { left: 1071px; }
-.nav-dropdown-col--faqs { left: 1283px; }
-.nav-dropdown-col--program { left: 1478px; }
+.nav-dropdown-col--program { left: 1283px; }
 
 /* ---------- 히어로 섹션 ---------- */
 .hero-title {
@@ -267,58 +266,41 @@ body {
 
 .hero-paragraph--front { top: 959.13px; color: #fff; text-shadow: 3px 3px 0 #000; font-size: 28px; }
 
-/* ---------- 2번째 화면 장식: 핑크 모니터 ---------- */
-.screen2-wash {
+/* ---------- 2번째 화면: 큰 핑크 모니터 ---------- */
+.screen2-section {
   position: absolute;
   z-index: 1;
   left: 0;
-  top: 1076.13px;
+  top: 1078.05px;
   width: 1920px;
-  height: 1083.847px;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.6) 0%,
-    rgba(255, 255, 255, 0.29) 70.673%,
-    rgba(255, 14, 165, 0) 100%
-  );
-  pointer-events: none;
+  height: 1080px;
+  background: #fff;
+  overflow: hidden;
 }
 
-.screen2-glow {
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 1392px;
-  width: 1920px;
-  height: 767.98px;
-  background: linear-gradient(to top, #ff0ea5 0%, rgba(255, 14, 165, 0) 75.481%);
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
-
+/* Figma: 2026.68x1224.75 이미지를 1920x1080 프레임 정중앙에 배치(넘치는 부분은 잘림) */
 .screen2-monitor {
   position: absolute;
-  z-index: 3;
   left: 50%;
-  top: 954.47px;
-  transform: translateX(-50%);
-  width: 1937.3px;
-  height: 1452.7px;
-  object-fit: contain;
-  object-position: bottom;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 2026.68px;
+  height: 1224.75px;
+  max-width: none;
   pointer-events: none;
 }
 
-/* 모니터 프레임 가운데 뚫린 화면 영역에 정확히 맞춘 영상 (프레임 뒤에 배치).
+/* 모니터 화면(안쪽 회색 유리) 영역에 맞춘 영상.
    클릭하면 소리와 함께 재생, 더블클릭하면 800x600 크기로 확대 */
 .screen2-video {
   position: absolute;
-  z-index: 2;
-  left: 604.33px;
-  top: 1247.71px;
-  width: 700px;
-  height: 500px;
+  z-index: 3;
+  left: 200px;
+  top: 1218px;
+  width: 1512px;
+  height: 780px;
   object-fit: cover;
+  border-radius: 26px;
   cursor: pointer;
 }
 
@@ -331,6 +313,7 @@ body {
   width: 800px;
   height: 600px;
   object-fit: cover;
+  border-radius: 0;
 }
 
 .screen2-video-backdrop {
@@ -350,31 +333,28 @@ body {
   position: absolute;
   z-index: 1;
   left: 0;
-  top: 2086.6px;
-  width: 700.73px;
-  height: 640.43px;
+  top: 2158px; /* 모니터 섹션 끝(2158)에 바로 붙여서 사이에 핑크 선이 비치지 않게 */
+  width: 702.73px;
+  height: 546px;
   background: var(--card-green);
 }
 
 .pain-photo-wrap {
   position: absolute;
   z-index: 2;
-  left: 700.73px;
-  top: 2086.6px;
-  width: 1227.5px;
-  height: 640.43px;
+  left: 699px; /* 초록 패널과 사진 사이 틈이 안 보이게 1px 왼쪽으로, 오른쪽 끝(1920px)은 유지 */
+  top: 2158px;
+  width: 1221px;
+  height: 546px;
   background: #eee;
   overflow: hidden;
 }
 
 .pain-photo-wrap img {
-  position: absolute;
-  left: 0;
-  top: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center bottom;
 }
 
 .pain-title {
@@ -396,14 +376,14 @@ body {
   width: 100%;
 }
 
-.pain-title--back { top: 2129.17px; left: 2px; color: #000; }
-.pain-title--front { top: 2128.13px; color: #ff0ea5; }
+.pain-title--back { top: 2200.68px; left: 2px; color: #000; }
+.pain-title--front { top: 2199.64px; color: #ff0ea5; }
 
 .pain-paragraph {
   position: absolute;
   z-index: 2;
   left: 66.87px;
-  top: 2299.17px;
+  top: 2370.68px;
   width: 563.38px;
   margin: 0;
   font-family: var(--font-body);
@@ -413,80 +393,288 @@ body {
   color: #000;
 }
 
-.pain-building-wrap {
-  position: absolute;
-  z-index: 2;
-  left: 18px;
-  top: 2524.41px;
-  width: 863.15px;
-  height: 643.78px;
-}
-
-.pain-building-wrap img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: bottom;
-}
-
-/* ---------- 특징 3카드 (그린+블루 그림자 스택) ---------- */
+/* ---------- 특징 3카드: 사진 + 그린 캡션 ---------- */
 .feature-card {
   position: absolute;
   z-index: 2;
-  top: 2795.41px;
-  width: 318.55px;
-  height: 226.24px;
+  top: 2751.2px;
+  width: 507px;
+  height: 502.5px;
   background: var(--card-green);
-  box-shadow: 10px 8.18px 0 0 var(--ticker-bg);
+  border: 3px solid #ff1fac;
+  box-shadow: 4px 4px 4.5px 0 rgba(0, 0, 0, 0.52);
+  overflow: hidden;
 }
 
-.feature-card--1 { left: 841.52px; }
-.feature-card--2 { left: 1200.07px; }
-.feature-card--3 { left: 1558.62px; }
+.feature-card--1 { left: 122.5px; }
+.feature-card--2 { left: 706.5px; }
+.feature-card--3 { left: 1290.5px; }
 
-.feature-card p {
+/* 사진 오른쪽에 흰 실선이 비치지 않도록 1% 크게(넘치는 부분은 카드 테두리 안쪽에서 잘림) */
+.feature-card-photo {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  top: 0;
+  width: 505.01px;
+  height: 313.81px;
+  object-fit: cover;
+}
+
+.feature-card-body {
+  position: absolute;
+  left: 0;
+  top: 310.7px;
+  width: 501px;
+  height: 189px;
+  background: var(--card-green);
+}
+
+.feature-card-body p {
+  position: absolute;
+  left: 31.32px; /* Figma 텍스트 x 32.62 - 카드 프레임 원점이 안쪽 테두리 1.3px 바깥 */
   margin: 0;
-  width: 295.11px;
-  text-align: center;
   color: #000;
   white-space: nowrap;
 }
 
-.feature-card .feature-num {
-  top: 22.9px;
-  font-family: var(--font-futura-bold-italic);
-  font-style: italic;
-  font-weight: 700;
-  font-size: 36px;
-}
-
 .feature-card .feature-title {
-  top: 88.21px;
-  font-family: var(--font-futura-bold-italic);
-  font-style: italic;
+  top: 21.07px;
+  font-family: var(--font-futura-bold);
+  font-style: normal;
   font-weight: 700;
   font-size: 26px;
+  line-height: 1.413;
 }
 
 .feature-card .feature-desc {
-  top: 144.21px;
-  font-family: var(--font-pixel);
+  top: 81.5px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.413;
+}
+
+/* 호버: 사진 위에 흰색 80% 막이 덮이고 가운데에 분홍 아이콘이 나타난다 (Figma Frame 353~355) */
+.feature-card-hover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 501px;
+  height: 310.7px;
+  background: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.feature-card:hover .feature-card-hover {
+  opacity: 1;
+}
+
+.feature-card-icon {
+  position: absolute;
+  display: block;
+}
+
+/* 카드 좌표계(Figma 프레임 기준)에서 테두리 중심 1.5px을 뺀 값 */
+.feature-card-icon--1 { left: 227.6px; top: 139.41px; width: 45.8px; height: 38.17px; }
+.feature-card-icon--2 { left: 227.6px; top: 139.42px; width: 45.8px; height: 45.8px; }
+.feature-card-icon--3 { left: 229.72px; top: 133.67px; width: 41.56px; height: 49.88px; }
+
+/* ---------- 후기 문구 + 흐르는 후기 카드 ---------- */
+.voice-section {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 3305px;
+  width: 1920px;
+  height: 1080px;
+  background: #ffc8eb;
+}
+
+.voice-banner {
+  position: absolute;
+  z-index: 2;
+  left: 165px;
+  top: 3365px;
+  width: 1590px;
+  height: 394px;
+  background: #ff62c4;
+  border: 1px solid #ff1fac;
+  overflow: hidden;
+}
+
+/* 배너 아래쪽이 흰색으로 옅어지는 그라데이션 (Figma Rectangle 468) */
+.voice-banner::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  width: 1599px;
+  height: 395.34px;
+  transform: translateX(-50%);
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 54.383%);
+  pointer-events: none;
+}
+
+.voice-banner-text {
+  position: absolute;
+  left: 665px;
+  top: 48px;
+  margin: 0;
+  font-family: 'Futura PT', var(--font-futura-demi);
+  font-weight: 600;
+  /* Figma(60px)보다 로컬 Futura PT가 약 5% 넓어서 줄 폭이 Figma(833px)에 맞도록 자간만 살짝 보정 */
+  font-size: 60px;
+  letter-spacing: -1.4px;
+  line-height: 1.03;
+  color: #f2fffe;
+  white-space: nowrap;
+}
+
+/* 배너 안 요소는 아래쪽 흰색 그라데이션(::after)보다 위에 놓는다 */
+.voice-banner > * {
+  z-index: 1;
+}
+
+.voice-banner-desc {
+  position: absolute;
+  left: 667.12px;
+  top: 317px;
+  width: 829.26px;
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.413;
+  color: #4e4e4e;
+  white-space: nowrap;
+}
+
+/* Figma: 625x311.12 박스 안에 원본 이미지를 높이 149.83%, 위로 -29.13% 어긋나게 배치 */
+.voice-banner-photo {
+  position: absolute;
+  left: 39px;
+  top: 65.44px;
+  width: 625px;
+  height: 311.12px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.voice-banner-photo img {
+  position: absolute;
+  left: 0;
+  top: -29.13%;
+  width: 100%;
+  height: 149.83%;
+  max-width: none;
+}
+
+.voice-marquee {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 3972px;
+  width: 1920px;
+  height: 320px;
+  overflow: hidden;
+}
+
+/* 카드 5장(폭 565 + 간격 50.4 = 한 장당 615.4px)을 두 번 이어붙여서 끊김 없이 왼쪽으로 흐른다.
+   시작 위치(-565px)는 Figma 배치: 맨 왼쪽 카드는 화면 밖, 두 번째 카드가 x=50부터 보인다. */
+.voice-track {
+  position: absolute;
+  left: -565px;
+  top: 0;
+  width: 6154px;
+  height: 320px;
+  animation: voice-scroll 60s linear infinite;
+}
+
+@keyframes voice-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-3077px); }
+}
+
+.voice-card {
+  position: absolute;
+  top: 5px;
+  width: 565px;
+  height: 302px;
+  background: #f2fffe;
+  border: 1px solid #d0d0d0;
+  box-shadow: 4px 4px 4.7px 0 rgba(0, 0, 0, 0.29);
+  overflow: hidden;
+}
+
+.voice-card p {
+  position: absolute;
+  margin: 0;
+  color: #000;
+}
+
+.voice-tag {
+  left: 29px;
+  top: 22px;
+  width: 503px;
+  padding: 0 5px;
+  background: #ff13a6;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #f2fffe !important;
+}
+
+.voice-stars {
+  left: 29.5px;
+  top: 62px;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 4px;
+  color: #ff13a6 !important;
+}
+
+.voice-text {
+  left: 30.65px;
+  top: 125.62px;
+  width: 501.7px;
+  font-family: var(--font-body);
+  font-weight: 500;
   font-size: 20px;
   line-height: 1.413;
 }
+
+.voice-author {
+  left: 30.65px;
+  top: 245px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.413;
+}
+
+/* 카드 위치(트랙 기준): 5장 + 같은 5장 반복 */
+.voice-card:nth-child(1) { left: 0; }
+.voice-card:nth-child(2) { left: 615.4px; }
+.voice-card:nth-child(3) { left: 1230.8px; }
+.voice-card:nth-child(4) { left: 1846.2px; }
+.voice-card:nth-child(5) { left: 2461.6px; }
+.voice-card:nth-child(6) { left: 3077px; }
+.voice-card:nth-child(7) { left: 3692.4px; }
+.voice-card:nth-child(8) { left: 4307.8px; }
+.voice-card:nth-child(9) { left: 4923.2px; }
+.voice-card:nth-child(10) { left: 5538.6px; }
 
 /* ---------- OUR 4 WEEK PROCESS ---------- */
 .process-section {
   position: absolute;
   z-index: 1;
   left: 0;
-  top: 3276.22px;
+  top: 4385px;
   width: 1920px;
-  height: 1240px;
+  height: 1080px;
   background: #d3ffc6;
 }
 
@@ -507,16 +695,17 @@ body {
 .process-title p {
   position: absolute;
   margin: 0;
+  white-space: nowrap;
 }
 
-.process-title--back { left: calc(8.33% - 16px); top: 41.95px; color: #000; }
-.process-title--front { left: 142px; top: 40.38px; color: #ff0ea5; }
+.process-title--back { left: 68.87px; top: 53.59px; color: #000; }
+.process-title--front { left: 66.87px; top: 52.03px; color: #ff0ea5; }
 
 .process-subtitle {
   position: absolute;
   z-index: 2;
-  left: calc(8.33% - 15.21px);
-  top: 116.83px;
+  left: 69.65px;
+  top: 128.47px;
   width: 746.95px;
   margin: 0;
   font-family: var(--font-body);
@@ -526,72 +715,167 @@ body {
   color: #000;
 }
 
-.week-card {
+.process-arrow {
   position: absolute;
   z-index: 2;
-  top: 308.74px;
-  width: 341.33px;
-  height: 462.07px;
-  background: #ff0ea5;
+  left: 1527.88px; /* 버튼(1619.38px)과의 간격을 넓히려고 Figma 위치(1543.88px)에서 16px 왼쪽으로 */
+  top: 49.99px;
+  width: 62.5px;
+  height: 54.55px;
+  animation: arrow-point 0.8s ease-in-out infinite;
 }
 
-.week-card::before {
-  content: '';
-  position: absolute;
-  left: -10px;
-  top: -10px;
-  width: 100%;
-  height: 100%;
-  background: #ffc8eb;
-  z-index: -1;
+/* 버튼을 가리키듯 오른쪽(버튼 쪽)으로 톡 갔다가 돌아오는 반복 */
+@keyframes arrow-point {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
 }
 
-.week-card--1 { left: 177.28px; }
-.week-card--2 { left: 588.67px; }
-.week-card--3 { left: 1000px; }
-.week-card--4 { left: 1411.39px; }
+@media (prefers-reduced-motion: reduce) {
+  .process-arrow { animation: none; }
+}
 
-.week-card-title {
+.process-apply {
   position: absolute;
-  left: -10px;
-  top: -72.2px;
-  margin: 0;
-  width: 295.11px;
-  font-family: var(--font-futura-demi-italic);
-  font-style: italic;
-  font-weight: 600;
-  font-size: 32px;
+  z-index: 2;
+  left: 1619.38px;
+  top: 51.27px;
+  width: 224px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ticker-bg);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 30px;
   line-height: 1.413;
+  color: #d3ffc6;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+/* 호버하면 파란 배경이 흰색으로 */
+.process-apply:hover {
+  background: #fff;
+}
+
+.week-box {
+  position: absolute;
+  z-index: 1;
+  top: 331.97px;
+  width: 412.2px;
+  height: 353.32px;
+  background: #ffc8eb;
+  border: 5px solid #ff0ea5;
+}
+
+.week-box--1 { left: 76.62px; }
+.week-box--2 { left: 528.82px; }
+.week-box--3 { left: 981.02px; }
+.week-box--4 { left: 1433.22px; }
+
+.week-icon {
+  position: absolute;
+  z-index: 2;
+  max-width: none;
+  pointer-events: none;
+}
+
+.week-icon--1 { left: 174.26px; top: 359.8px; width: 216.92px; height: 297.65px; }
+.week-icon--3 { left: 1101.28px; top: 340.8px; width: 291.94px; height: 335.67px; }
+
+/* 90도 / 8.58도 회전된 아이콘: 회전 전 크기 그대로 박스 중앙에 놓고 회전 */
+.week-icon-rot {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.week-icon-rot img {
+  display: block;
+  flex: none;
+  max-width: none;
+}
+
+.week-icon-rot--2 { left: 567.6px; top: 389.39px; width: 332.61px; height: 245.78px; }
+.week-icon-rot--2 img { width: 245.78px; height: 332.61px; transform: rotate(90deg); }
+
+.week-icon-rot--4 { left: 1497.63px; top: 359.8px; width: 285.75px; height: 304.77px; }
+.week-icon-rot--4 img { width: 248.14px; height: 270.79px; transform: rotate(8.58deg); }
+
+.week-title {
+  position: absolute;
+  z-index: 2;
+  top: 269px;
+  margin: 0;
+  font-family: var(--font-futura-bold);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.413;
+  color: #ff1fac;
+  white-space: nowrap;
+}
+
+.week-title--1 { left: 76.62px; }
+.week-title--2 { left: 528.82px; }
+.week-title--3 { left: 981.02px; }
+.week-title--4 { left: 1433.22px; }
+
+.week-heading {
+  position: absolute;
+  z-index: 2;
+  top: 705.19px;
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.5;
   color: #000;
   white-space: nowrap;
 }
 
-.week-card-icon {
-  position: absolute;
-  opacity: 0.51;
-  object-fit: cover;
-  pointer-events: none;
-}
+.week-heading--1 { left: 76.62px; }
+.week-heading--2 { left: 528.82px; }
+.week-heading--3 { left: 981.02px; }
+.week-heading--4 { left: 1433.22px; }
 
-.week-card-desc {
+.week-kr,
+.week-en {
   position: absolute;
-  left: 22px;
-  top: 244.07px;
+  z-index: 2;
   margin: 0;
-  width: 276.94px;
+  width: 352.57px;
   font-family: var(--font-body);
-  font-weight: 500;
   font-size: 20px;
   line-height: 1.5;
   color: #000;
 }
+
+.week-kr { top: 774.09px; font-weight: 500; }
+.week-en { font-weight: 400; }
+
+.week-kr--1, .week-en--1 { left: 76.62px; }
+.week-kr--2, .week-en--2 { left: 528.82px; }
+.week-kr--3, .week-en--3 { left: 981.02px; }
+.week-kr--4, .week-en--4 { left: 1433.22px; }
+
+.week-en--1 { top: 846px; }
+.week-en--2 { top: 876.09px; }
+.week-en--3 { top: 874.09px; }
+.week-en--4 { top: 901.05px; }
 
 /* ---------- PERFECTION THAT LASTS FOREVER ---------- */
 .perfection-section {
   position: absolute;
   z-index: 1;
   left: 0;
-  top: 4516.22px;
+  top: 5462px;
   width: 1920px;
   height: 748px;
   background: #ffc8eb;
@@ -625,7 +909,7 @@ body {
   position: absolute;
   z-index: 2;
   left: 60px;
-  top: 216.81px;
+  top: 220.17px;
   width: 565.38px;
   margin: 0;
   font-family: var(--font-body);
@@ -636,7 +920,7 @@ body {
 }
 
 .perfection-paragraph p {
-  margin: 0 0 22px 0;
+  margin: 0 0 36px 0;
 }
 
 .perfection-photo-wrap {
@@ -658,38 +942,19 @@ body {
   max-width: none;
 }
 
-.perfection-dots {
-  position: absolute;
-  z-index: 2;
-  left: 419.04px;
-  top: 636px;
-  width: 175px;
-  height: 11px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.perfection-dots span {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: #959595;
-}
-
 .perfection-phone {
   position: absolute;
   z-index: 2;
-  left: 612.95px;
-  top: 537.67px;
-  width: 231.06px;
-  height: 184.91px;
+  left: 529.4px;
+  top: 486px;
+  width: 284px;
+  height: 225.5px;
 }
 
 .perfection-phone img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 /* ---------- 푸터 ---------- */
@@ -697,7 +962,7 @@ body {
   position: absolute;
   z-index: 1;
   left: 0;
-  top: 5264.22px;
+  top: 6210px;
   width: 1920px;
   height: 358px;
   background: var(--ticker-bg);
@@ -802,3 +1067,12 @@ body {
 
 .intranet-modal-btn--yes { left: 209px; }
 .intranet-modal-btn--no { left: 491px; }
+
+/* Figma 줄바꿈을 그대로 재현하려고 일부 문단은 <br>로 줄을 고정했다(폭이 넘쳐도 다시 줄바꿈하지 않음) */
+.pain-paragraph,
+.week-kr,
+.week-en,
+.voice-text--fixed,
+.perfection-paragraph p {
+  white-space: nowrap;
+}
