@@ -329,6 +329,17 @@ body {
 }
 
 /* ---------- DON'T BE IN PAIN ANYMORE ---------- */
+/* 이 프레임(Figma "3")의 배경색. 모니터 섹션 끝(2158)부터 후기 섹션 직전(3302)까지 단색 */
+.pain-bg {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 2158px;
+  width: 1920px;
+  height: 1144px;
+  background: #ff57c1;
+}
+
 .pain-green-panel {
   position: absolute;
   z-index: 1;

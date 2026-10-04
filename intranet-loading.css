@@ -50,3 +50,30 @@ body {
   text-align: center;
   white-space: nowrap;
 }
+
+/* 접속 진행바: 도트 폰트 분위기에 맞춰 칸이 하나씩 채워지는 28칸짜리 바.
+   채워지는 시간은 intranet-loading.js의 LOADING_DURATION_MS와 같은 값(--loading-duration)을 쓴다. */
+.loading-bar {
+  position: absolute;
+  left: 50%;
+  top: 612px;
+  transform: translateX(-50%);
+  width: 688px;
+  height: 36px;
+  padding: 5px;
+  border: 3px solid #fff;
+  overflow: hidden;
+}
+
+.loading-bar-fill {
+  width: 0;
+  height: 100%;
+  /* 18px 칸 + 6px 틈 = 24px 단위, 28칸 = 672px */
+  background: repeating-linear-gradient(to right, #fff 0, #fff 18px, transparent 18px, transparent 24px);
+  animation: loading-fill var(--loading-duration, 4s) steps(28, end) forwards;
+}
+
+@keyframes loading-fill {
+  from { width: 0; }
+  to { width: 672px; }
+}
