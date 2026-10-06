@@ -9,20 +9,21 @@
   --accent-pink: #ff1fac;
 
   --font-futura-extrabold:
-    'Futura PT Extra Bold', 'Poppins', 'Century Gothic', 'Trebuchet MS',
-    sans-serif;
+    'Futura PT Extra Bold', 'Futura PT', sans-serif;
   --font-futura-bold:
-    'Futura PT Bold', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
+    'Futura PT Bold', 'Futura PT', sans-serif;
   --font-futura-heavy:
-    'Futura PT Demi', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
+    'Futura PT Demi', 'Futura PT', sans-serif;
   --font-futura-demi:
-    'Futura PT Demi', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
+    'Futura PT Demi', 'Futura PT', sans-serif;
   --font-futura-medium:
-    'Futura PT Medium', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
+    'Futura PT Medium', 'Futura PT', sans-serif;
   --font-futura-book:
-    'Futura PT Book', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
+    'Futura PT Book', 'Futura PT', sans-serif;
   --font-futura-light:
-    'Futura PT Light', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
+    'Futura PT Light', 'Futura PT', sans-serif;
+  --font-futura-bold-italic:
+    'Futura PT Bold Italic', 'Futura PT', sans-serif;
 
   --font-pixel: 'NeoDunggeunmo Pro', 'NeoDunggeunmoPro', monospace;
   --font-body: 'Pretendard', sans-serif;
@@ -116,6 +117,8 @@ body {
   height: 88px;
   background: var(--nav-bg);
   overflow: hidden;
+  /* 네비게이션 바 아래쪽 드롭 섀도우 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .nav-logo {
@@ -343,9 +346,9 @@ body {
 .faq-front .q-num span {
   display: block;
   transform: scaleY(-1);
-  font-family: var(--font-futura-bold);
+  font-family: var(--font-futura-bold-italic); /* 이미 기울어진 글꼴(fonts.css) */
   font-weight: 700;
-  font-style: italic;
+  font-style: normal;
   font-size: 32px;
   color: #fff;
 }

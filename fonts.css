@@ -1,0 +1,70 @@
+/* Futura PT 글꼴 연결 (공용)
+   이 컴퓨터에는 Futura PT가 굵기별로 설치돼 있는데, 웹 페이지가 'Futura PT Bold' 같은
+   이름으로 바로 찾지 못하는 경우가 있다(그러면 Poppins 같은 대체 글꼴로 바뀐다).
+   그래서 설치된 글꼴의 실제 이름(local)에 사이트에서 쓰는 이름을 이어 준다.
+   - font-weight를 범위(100~900)로 선언해서 페이지에서 700/600 등을 같이 써도 가짜 볼드가 겹치지 않는다.
+   - '...Italic' 이름은 설치된 Oblique(진짜 기울임체)에 이어 준다. 이미 기울어진 글꼴이므로
+     이 이름을 쓰는 곳에서는 font-style: italic을 또 주지 말 것(한 번 더 기울어진다). */
+@font-face {
+  font-family: 'Futura PT Book';
+  src: local('Futura PT Book'), local('FuturaPT-Book');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura PT Light';
+  src: local('Futura PT Light'), local('FuturaPT-Light');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura PT Medium';
+  src: local('Futura PT Medium'), local('FuturaPT-Medium');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura PT Demi';
+  src: local('Futura PT Demi'), local('FuturaPT-Demi');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura PT Bold';
+  src: local('Futura PT Bold'), local('FuturaPT-Bold');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura PT Extra Bold';
+  src: local('Futura PT Extra Bold'), local('FuturaPT-ExtraBold');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura PT Heavy';
+  src: local('Futura PT Heavy'), local('FuturaPT-Heavy');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+/* 기울임체: 설치된 이름은 Oblique */
+@font-face {
+  font-family: 'Futura PT Bold Italic';
+  src: local('Futura PT Bold Oblique'), local('FuturaPT-BoldObl');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura PT Demi Italic';
+  src: local('Futura PT Demi Oblique'), local('FuturaPT-DemiObl');
+  font-weight: 100 900;
+  font-style: normal;
+}

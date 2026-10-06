@@ -7,11 +7,11 @@
   --nav-text: #ff11a6;
   --card-green: #c3fbb2;
 
-  --font-futura-demi: 'Futura PT Demi', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
-  --font-futura-medium: 'Futura PT Medium', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
-  --font-futura-bold: 'Futura PT Bold', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
-  --font-futura-bold-italic: 'Futura PT Bold Italic', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
-  --font-futura-demi-italic: 'Futura PT Demi Italic', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
+  --font-futura-demi: 'Futura PT Demi', 'Futura PT', sans-serif;
+  --font-futura-medium: 'Futura PT Medium', 'Futura PT', sans-serif;
+  --font-futura-bold: 'Futura PT Bold', 'Futura PT', sans-serif;
+  --font-futura-bold-italic: 'Futura PT Bold Italic', 'Futura PT', sans-serif;
+  --font-futura-demi-italic: 'Futura PT Demi Italic', 'Futura PT', sans-serif;
   --font-pixel: 'NeoDunggeunmo Pro', 'NeoDunggeunmoPro', monospace;
   --font-body: 'Pretendard', sans-serif;
 }
@@ -111,6 +111,8 @@ body {
   height: 88px;
   background: var(--nav-bg);
   overflow: hidden;
+  /* 네비게이션 바 아래쪽 드롭 섀도우 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .nav-logo {
@@ -209,62 +211,233 @@ body {
 .hero-title {
   position: absolute;
   z-index: 2;
-  left: 0;
-  top: 0;
-  width: 1920px;
-  height: 95px;
+  left: 75.78px;
+  top: 183.7px; /* Frame 362(y=136) + 47.7 */
+  width: 1768.45px;
+  margin: 0;
   font-family: var(--font-futura-bold);
   font-weight: 700;
-  font-size: 80px;
+  font-size: 70px;
   line-height: 1;
-  letter-spacing: -0.8px;
+  letter-spacing: -0.7px;
   text-align: center;
+  white-space: nowrap;
+  color: #ffcb00;
+  text-shadow: 3px 3px 0 #000;
+}
+
+/* 건물 사진: Figma의 부드러운 타원 마스크를 미리 적용해서 투명 PNG로 만들어 둔 것(1641x737).
+   (CSS mask-image는 파일로 직접 열었을 때(file://) 브라우저가 막아서 그림이 통째로 사라질 수 있어서 쓰지 않는다)
+   위치: Figma 마스크 박스 (x 137.46, y 137.86) + Frame 362 시작(136) */
+.hero-building {
+  position: absolute;
+  z-index: 2;
+  left: 137.46px;
+  top: 273.86px;
+  width: 1641.08px;
+  height: 737.19px;
+  pointer-events: none;
+}
+
+.hero-building img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- 미니 신청 카드 ---------- */
+.mini-apply {
+  position: absolute;
+  z-index: 3;
+  left: 1460px;
+  top: 411px; /* 136 + 295 에서 20px 위로 */
+  width: 381px;
+  height: 518px;
+  background: var(--card-green);
+  border: 0.5px solid #000;
+  box-shadow: 3px 3px 1.8px 0 rgba(0, 0, 0, 0.37);
+  overflow: hidden;
+}
+
+.mini-apply > * {
+  position: absolute;
+  margin: 0;
+}
+
+.mini-apply-tag {
+  left: 19.5px;
+  top: 18.5px;
+  width: 95px;
+  padding: 0 5px;
+  background: #ff1fac;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--card-green);
   white-space: nowrap;
 }
 
-.hero-title p {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
-  width: 100%;
+.mini-apply-title {
+  left: 18.5px;
+  top: 82.68px;
+  width: 327px;
+  transform: translateY(-50%);
+  font-family: 'Futura PT Heavy', var(--font-futura-bold);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 25px;
+  color: #ff1fac;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
 }
 
-.hero-title--back { top: 208.7px; color: #000; }
-.hero-title--front { top: 203.7px; color: #ffcb00; }
-
-.hero-blob {
-  position: absolute;
-  z-index: 2;
-  left: 444.98px;
-  top: 301.38px;
-  width: 1030.05px;
-  height: 629.55px;
+.mini-apply-label {
+  left: 19.5px;
+  transform: translateY(-50%);
+  font-family: var(--font-pixel);
+  font-size: 18px;
+  line-height: 30px;
+  color: #000;
+  white-space: nowrap;
 }
 
-.hero-paragraph {
+.mini-apply-label--name { top: 164px; }
+.mini-apply-label--phone { top: 215px; }
+
+.mini-apply-input {
+  left: 121.34px;
+  width: 244.16px;
+  height: 28.63px;
+  padding: 0 8px;
+  border: 1px solid #ff0ea5;
+  background: #f2fffe;
+  box-shadow: inset 0 0 7.8px 2px #d9d9d9;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #000;
+  outline: none;
+}
+
+.mini-apply-input--name { top: 149.68px; }
+.mini-apply-input--phone { top: 200.68px; }
+
+/* 유형 선택 4칸(하나만 선택): 선택하면 연분홍 */
+.mini-apply-type {
+  width: 164px;
+  height: 63px;
+  border: 1px solid #ff1fac;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.mini-apply-type input {
   position: absolute;
-  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mini-apply-type:has(input:checked) {
+  background: #ffc8eb;
+}
+
+.mini-apply-type-text {
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-pixel);
+  font-size: 20px;
+  line-height: 30px;
+  color: #000;
+  white-space: nowrap;
+}
+
+.mini-apply-type img {
+  position: absolute;
+  max-width: none;
+  pointer-events: none;
+}
+
+.mini-apply-type--beloved { left: 20px; top: 254.43px; }
+.mini-apply-type--tuned { left: 196px; top: 255.43px; }
+.mini-apply-type--candied { left: 20px; top: 333.43px; }
+.mini-apply-type--glossed { left: 196px; top: 333.43px; }
+
+.mini-apply-type--beloved img { left: 101.9px; top: 6.09px; width: 42.5px; height: 49.18px; }
+.mini-apply-type--tuned img { left: 99.11px; top: 9.4px; width: 47.77px; height: 42.21px; }
+.mini-apply-type--candied img { left: 105.75px; top: 6.55px; width: 34.5px; height: 47.89px; }
+.mini-apply-type--glossed img { left: 108.25px; top: 5.2px; width: 29.5px; height: 50.6px; }
+
+/* 동의 체크박스 */
+.mini-apply-agree {
+  left: 104.25px;
+  top: 424.05px;
+  width: 250px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.mini-apply-agree input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mini-apply-check {
+  position: absolute;
   left: 0;
   top: 0;
-  width: 1920px;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 1.413;
-  text-align: center;
-  white-space: pre-wrap;
+  width: 17px;
+  height: 15.91px;
+  border: 1px solid #ff0ea5;
+  background: #f2fffe;
+  box-shadow: inset 0 0 7.8px 2px #d9d9d9;
 }
 
-.hero-paragraph p {
+.mini-apply-agree input:checked + .mini-apply-check::after {
+  content: '';
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
-  width: 1400px;
+  left: 4px;
+  top: 0;
+  width: 4px;
+  height: 9px;
+  border: solid #ff0ea5;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
-.hero-paragraph--front { top: 959.13px; color: #fff; text-shadow: 3px 3px 0 #000; font-size: 28px; }
+.mini-apply-agree-text {
+  position: absolute;
+  left: 22.5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 30px;
+  color: #000;
+  white-space: pre;
+}
+
+.mini-apply-btn {
+  left: 50%;
+  top: 459.32px;
+  width: 230px;
+  height: 39px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #002cd0;
+  font-family: var(--font-pixel);
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--card-green);
+  text-decoration: none;
+  white-space: nowrap;
+  filter: drop-shadow(1px 1px 0.5px rgba(0, 0, 0, 0.4));
+}
 
 /* ---------- 2번째 화면: 큰 핑크 모니터 ---------- */
 .screen2-section {
@@ -374,8 +547,10 @@ body {
   left: 66.87px;
   top: 0;
   width: 630px;
+  /* 'Futura PT Bold Italic'은 fonts.css에서 설치된 Bold Oblique(이미 기울어진 글꼴)에 이어 둔 이름이다.
+     그래서 font-style: italic을 또 주면 한 번 더 기울어진다. */
   font-family: var(--font-futura-bold-italic);
-  font-style: italic;
+  font-style: normal;
   font-weight: 700;
   font-size: 64px;
   line-height: 1.03;
@@ -398,7 +573,7 @@ body {
   width: 563.38px;
   margin: 0;
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 24px;
   line-height: 1.5;
   color: #000;
@@ -503,16 +678,63 @@ body {
   background: #ffc8eb;
 }
 
-.voice-banner {
+/* ---------- 배너 슬라이더: 배너1(분홍)·배너2(초록)가 번갈아 옆으로 넘어간다 ----------
+   Figma Frame 356: 배너 폭 1590 + 간격 87 = 한 칸 1677px.
+   가운데(x=165) 배너 양옆에 이웃 배너가 78px씩 살짝 보인다. */
+.banner-slider {
   position: absolute;
   z-index: 2;
-  left: 165px;
-  top: 3365px;
+  left: 0;
+  top: 3355px;
+  width: 1920px;
+  height: 364px;
+  overflow: hidden;
+  /* 마우스/터치로 좌우로 끌 수 있다(banner-drag.js). 세로 스크롤은 그대로 동작 */
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.banner-slider img {
+  -webkit-user-drag: none;
+}
+
+.banner-track {
+  position: absolute;
+  left: -1512px; /* 두 번째 배너(분홍)가 x=165에 오도록 (165 - 1677) */
+  top: 0;
+  display: flex;
+  gap: 87px;
+  width: max-content;
+  /* 후기 카드(60초에 한 바퀴, 연속)와는 다르게: 14초 주기로 멈췄다가(5.5초) 1.5초 동안 한 칸 넘어간다 */
+  animation: banner-slide 14s infinite;
+}
+
+@keyframes banner-slide {
+  0%, 39.2%   { transform: translateX(0); animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1); }
+  50%, 89.2%  { transform: translateX(-1677px); animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1); }
+  100%        { transform: translateX(-3354px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner-track { animation: none; }
+}
+
+.voice-banner {
+  position: relative;
+  flex: none;
   width: 1590px;
-  height: 394px;
-  background: #ff62c4;
+  height: 364px;
   border: 1px solid #ff1fac;
   overflow: hidden;
+}
+
+.voice-banner--pink {
+  background: #ff62c4;
+}
+
+.voice-banner--green {
+  background: #c3fbb2;
 }
 
 /* 배너 아래쪽이 흰색으로 옅어지는 그라데이션 (Figma Rectangle 468) */
@@ -530,14 +752,13 @@ body {
 
 .voice-banner-text {
   position: absolute;
-  left: 665px;
-  top: 48px;
+  left: 664px;
+  top: 82px;
   margin: 0;
-  font-family: 'Futura PT', var(--font-futura-demi);
+  font-family: var(--font-futura-demi);
   font-weight: 600;
-  /* Figma(60px)보다 로컬 Futura PT가 약 5% 넓어서 줄 폭이 Figma(833px)에 맞도록 자간만 살짝 보정 */
-  font-size: 60px;
-  letter-spacing: -1.4px;
+  /* fonts.css의 Futura PT Demi가 Figma와 같은 폭이라 자간 보정은 필요 없다(줄 폭 888px / 초록 배너 1045px) */
+  font-size: 64px;
   line-height: 1.03;
   color: #f2fffe;
   white-space: nowrap;
@@ -548,10 +769,75 @@ body {
   z-index: 1;
 }
 
+/* 배너 위쪽 작은 흰 태그 (Figma Frame 350) */
+.voice-banner-tag {
+  position: absolute;
+  left: 667px;
+  top: 35px;
+  width: 391px;
+  height: 30px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f2fffe;
+  font-family: 'Futura PT Heavy', var(--font-futura-bold);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #ff62c4;
+  white-space: nowrap;
+}
+
+/* 초록 배너(배너2): 그라데이션은 흰색(위쪽 26.6%에서 투명 -> 아래 흰색) */
+.voice-banner--green::after {
+  background: linear-gradient(to top, #fff 0%, rgba(255, 255, 255, 0) 26.559%);
+}
+
+.voice-banner-tag--green {
+  left: 39px;
+  width: 205px;
+  background: #ff1fac;
+  color: #daffce;
+}
+
+/* 초록 배너의 큰 문구: 분홍 글자(테두리 없음) */
+.voice-banner .voice-banner-text--outline {
+  left: 36px;
+  top: 82px;
+  color: #ff1fac; /* 글자색을 분홍으로, 테두리(outline)는 없앤다 */
+}
+
+.voice-banner-sub {
+  position: absolute;
+  left: 39.12px;
+  top: 165.33px;
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.413;
+  color: #000;
+  white-space: nowrap;
+}
+
+.voice-banner .voice-banner-desc--left {
+  left: 39.12px;
+}
+
+.voice-banner-phone {
+  position: absolute;
+  left: 1145.88px;
+  top: -32.34px;
+  width: 414.12px;
+  height: 414.12px;
+  pointer-events: none;
+}
+
 .voice-banner-desc {
   position: absolute;
   left: 667.12px;
-  top: 317px;
+  top: 287px;
   width: 829.26px;
   margin: 0;
   font-family: var(--font-body);
@@ -566,7 +852,7 @@ body {
 .voice-banner-photo {
   position: absolute;
   left: 39px;
-  top: 65.44px;
+  top: 45.44px;
   width: 625px;
   height: 311.12px;
   overflow: hidden;
@@ -582,11 +868,51 @@ body {
   max-width: none;
 }
 
+/* ---------- 후기 제목 / 부제 (Figma Group 225, 226) ---------- */
+.voice-heading {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  /* 'Futura PT Bold Italic'은 fonts.css에서 설치된 Bold Oblique(이미 기울어진 글꼴)에 이어 둔 이름이다.
+     그래서 font-style: italic을 또 주면 한 번 더 기울어진다. */
+  font-family: var(--font-futura-bold-italic);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1.03;
+}
+
+.voice-heading p {
+  position: absolute;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.voice-heading--back { left: 54.32px; top: 3800.06px; color: #000; }
+.voice-heading--front { left: 50.38px; top: 3798.5px; color: #ff0ea5; }
+
+.voice-subheading {
+  position: absolute;
+  z-index: 2;
+  left: 69.65px;
+  top: 3876.5px;
+  width: 1399.12px;
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.5;
+  color: #000;
+  white-space: nowrap;
+}
+
 .voice-marquee {
   position: absolute;
   z-index: 2;
   left: 0;
-  top: 3972px;
+  top: 3992px;
   width: 1920px;
   height: 320px;
   overflow: hidden;
@@ -696,8 +1022,10 @@ body {
   top: 0;
   width: 1920px;
   height: 81px;
+  /* 'Futura PT Bold Italic'은 fonts.css에서 설치된 Bold Oblique(이미 기울어진 글꼴)에 이어 둔 이름이다.
+     그래서 font-style: italic을 또 주면 한 번 더 기울어진다. */
   font-family: var(--font-futura-bold-italic);
-  font-style: italic;
+  font-style: normal;
   font-weight: 700;
   font-size: 64px;
   line-height: 1.03;
@@ -720,7 +1048,7 @@ body {
   width: 746.95px;
   margin: 0;
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 24px;
   line-height: 1.5;
   color: #000;
@@ -899,8 +1227,10 @@ body {
   left: 0;
   top: 0;
   width: 567px;
+  /* 'Futura PT Bold Italic'은 fonts.css에서 설치된 Bold Oblique(이미 기울어진 글꼴)에 이어 둔 이름이다.
+     그래서 font-style: italic을 또 주면 한 번 더 기울어진다. */
   font-family: var(--font-futura-bold-italic);
-  font-style: italic;
+  font-style: normal;
   font-weight: 700;
   font-size: 64px;
   line-height: 1.03;
@@ -924,7 +1254,7 @@ body {
   width: 565.38px;
   margin: 0;
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 24px;
   line-height: 1.5;
   color: #000;

@@ -4,7 +4,10 @@
   const stage = document.querySelector('.stage');
   if (!frame || !scaled || !stage) return;
 
-  const BORDER = 30; // 사방 검정 틀 두께는 화면 크기와 무관하게 고정 30px
+  // 외곽 검정 틀 사용 여부. 지금은 감춰 두었다(false) -> 틀 두께 0, 콘텐츠가 화면 폭을 꽉 채운다.
+  // 다시 켜려면 true로만 바꾸면 된다. (검정 틀 두께는 화면 크기와 무관하게 고정 30px)
+  const SHOW_BEZEL = false;
+  const BORDER = SHOW_BEZEL ? 30 : 0;
   const stageHeight = stage.offsetHeight || 1079;
 
   // 스크롤 도중에도 틀이 화면에 계속 떠 있도록, body 여백(맨 위/아래 버퍼용)과는

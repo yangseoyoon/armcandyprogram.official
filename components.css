@@ -7,8 +7,8 @@
   --nav-text: #ff11a6;
   --card-green: #c3fbb2;
 
-  --font-futura-demi: 'Futura PT Demi', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
-  --font-futura-heavy: 'Futura PT Demi', 'Poppins', 'Century Gothic', 'Trebuchet MS', sans-serif;
+  --font-futura-demi: 'Futura PT Demi', 'Futura PT', sans-serif;
+  --font-futura-heavy: 'Futura PT Demi', 'Futura PT', sans-serif;
   --font-pixel: 'NeoDunggeunmo Pro', 'NeoDunggeunmoPro', monospace;
   --font-body: 'Pretendard', sans-serif;
 }
@@ -124,6 +124,8 @@ body {
   height: 88px;
   background: var(--nav-bg);
   overflow: hidden;
+  /* 네비게이션 바 아래쪽 드롭 섀도우 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .nav-logo {

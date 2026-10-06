@@ -12,15 +12,12 @@
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap"
-    />
-    <link
-      rel="stylesheet"
       href="//cdn.jsdelivr.net/gh/neodgm/neodgm-pro-webfont@latest/neodgm_pro/style.css"
     />
 
     <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="crt-effect.css" />
+    <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="cursor.css" />
     <script src="cursor.js" defer></script>
   </head>
@@ -87,20 +84,47 @@
         </div>
       </div>
 
-      <!-- 히어로 섹션 -->
-      <div class="hero-title">
-        <p class="hero-title--back">THE MOST PERFECT PROGRAM FOR YOU</p>
-        <p class="hero-title--front">THE MOST PERFECT PROGRAM FOR YOU</p>
+      <!-- 히어로 섹션 (Figma Frame 362) -->
+      <h1 class="hero-title">THE MOST PERFECT PROGRAM FOR YOU</h1>
+
+      <div class="hero-building" role="img" aria-label="ARM CANDY PROGRAM 건물">
+        <img src="images/main/hero-building.png" alt="" />
       </div>
 
-      <img
-        class="hero-blob"
-        src="images/main/hero-blob@2x.png"
-        alt="ARM CANDY PROGRAM 건물"
-      />
-
-      <div class="hero-paragraph">
-        <p class="hero-paragraph--front">개인에게 맞는 맞춤형 교정 프로그램 - 대상자의 성향 테스트 후 가장 적합한<br />교정 유형을 배정하며, 대상자가 완벽하게 교정 될때까지 절대 포기하지 않습니다.</p>
+      <!-- 미니 신청 카드: 신청하세요 버튼은 신청 페이지로 이동 -->
+      <div class="mini-apply">
+        <p class="mini-apply-tag">APPLY NOW</p>
+        <p class="mini-apply-title">GO BACK TO A NORAML LIFE</p>
+        <label class="mini-apply-label mini-apply-label--name" for="miniName">이름</label>
+        <input class="mini-apply-input mini-apply-input--name" id="miniName" type="text" autocomplete="off" required />
+        <label class="mini-apply-label mini-apply-label--phone" for="miniPhone">전화번호</label>
+        <input class="mini-apply-input mini-apply-input--phone" id="miniPhone" type="tel" autocomplete="off" required />
+        <label class="mini-apply-type mini-apply-type--beloved">
+          <input type="radio" name="miniType" value="BELOVED" />
+          <span class="mini-apply-type-text">BELOVED</span>
+          <img src="images/main/mini-icon-beloved.png" alt="" />
+        </label>
+        <label class="mini-apply-type mini-apply-type--tuned">
+          <input type="radio" name="miniType" value="TUNED" />
+          <span class="mini-apply-type-text">TUNED</span>
+          <img src="images/main/mini-icon-tuned.png" alt="" />
+        </label>
+        <label class="mini-apply-type mini-apply-type--candied">
+          <input type="radio" name="miniType" value="CANDIED" />
+          <span class="mini-apply-type-text">CANDIED</span>
+          <img src="images/main/mini-icon-candied.png" alt="" />
+        </label>
+        <label class="mini-apply-type mini-apply-type--glossed">
+          <input type="radio" name="miniType" value="GLOSSED" />
+          <span class="mini-apply-type-text">GLOSSED</span>
+          <img src="images/main/mini-icon-glossed.png" alt="" />
+        </label>
+        <label class="mini-apply-agree">
+          <input type="checkbox" id="miniAgree" required />
+          <span class="mini-apply-check"></span>
+          <span class="mini-apply-agree-text"> I agree with everything</span>
+        </label>
+        <a class="mini-apply-btn" href="complete.html" id="miniApplyBtn">신청하세요</a>
       </div>
 
       <!-- 2번째 화면: 큰 핑크 모니터 프레임. 화면 안에 영상 배치.
@@ -188,17 +212,82 @@
 
       <!-- 후기 문구 + 흐르는 후기 카드 -->
       <div class="voice-section" aria-hidden="true"></div>
-      <div class="voice-banner">
-        <p class="voice-banner-text">
-          Abnormalities can be corrected.<br />You can be a happy woman too.
-        </p>
-        <p class="voice-banner-desc">
-          ARM CANDY PROGRAM은 모든 여성들을 정상으로 교정하고 사회의 질서를 유지하기 위해서 존재합니다.<br />변화는 혼란의 시작입니다. 여성들은 생물학적으로, 지적으로, 감정적으로 열등하기에 관리받아야하고 제한당해야합니다.
-        </p>
-        <div class="voice-banner-photo">
-          <img src="images/main/banner-building.png" alt="ARM CANDY PROGRAM 건물" />
+      <!-- 배너: 두 배너가 옆으로 교차해서 넘어간다 (후기 카드와 다른 속도) -->
+      <div class="banner-slider">
+        <div class="banner-track">
+          <div class="voice-banner voice-banner--green" aria-hidden="true">
+            <p class="voice-banner-tag voice-banner-tag--green">Any time you want</p>
+            <p class="voice-banner-text voice-banner-text--outline">
+              24-hour consultation service available
+            </p>
+            <p class="voice-banner-sub">
+              더 이상 망설이지 마세요. ARM CANDY PROGRAM은 언제나 당신을 기다리고 있습니다.<br />아침, 점심, 저녁, 밤, 주말 및 공휴일 언제든지 전화주세요.
+            </p>
+            <p class="voice-banner-desc voice-banner-desc--left">
+              ARM CANDY PROGRAM은 모든 여성들을 정상으로 교정하고 사회의 질서를 유지하기 위해서 존재합니다.<br />변화는 혼란의 시작입니다. 여성들은 생물학적으로, 지적으로, 감정적으로 열등하기에 관리받아야하고 제한당해야합니다.
+            </p>
+            <img class="voice-banner-phone" src="images/main/banner2-photo.png" alt="분홍색 다이얼 전화기" />
+          </div>
+          <div class="voice-banner voice-banner--pink">
+            <p class="voice-banner-tag">ARM CANDY PROGRAM NEVER GIVE UP</p>
+            <p class="voice-banner-text">
+              Abnormalities can be corrected.<br />You can be a happy woman too.
+            </p>
+            <p class="voice-banner-desc">
+              ARM CANDY PROGRAM은 모든 여성들을 정상으로 교정하고 사회의 질서를 유지하기 위해서 존재합니다.<br />변화는 혼란의 시작입니다. 여성들은 생물학적으로, 지적으로, 감정적으로 열등하기에 관리받아야하고 제한당해야합니다.
+            </p>
+            <div class="voice-banner-photo">
+              <img src="images/main/banner-building.png" alt="ARM CANDY PROGRAM 건물" />
+            </div>
+          </div>
+          <div class="voice-banner voice-banner--green" aria-hidden="true">
+            <p class="voice-banner-tag voice-banner-tag--green">Any time you want</p>
+            <p class="voice-banner-text voice-banner-text--outline">
+              24-hour consultation service available
+            </p>
+            <p class="voice-banner-sub">
+              더 이상 망설이지 마세요. ARM CANDY PROGRAM은 언제나 당신을 기다리고 있습니다.<br />아침, 점심, 저녁, 밤, 주말 및 공휴일 언제든지 전화주세요.
+            </p>
+            <p class="voice-banner-desc voice-banner-desc--left">
+              ARM CANDY PROGRAM은 모든 여성들을 정상으로 교정하고 사회의 질서를 유지하기 위해서 존재합니다.<br />변화는 혼란의 시작입니다. 여성들은 생물학적으로, 지적으로, 감정적으로 열등하기에 관리받아야하고 제한당해야합니다.
+            </p>
+            <img class="voice-banner-phone" src="images/main/banner2-photo.png" alt="분홍색 다이얼 전화기" />
+          </div>
+          <div class="voice-banner voice-banner--pink" aria-hidden="true">
+            <p class="voice-banner-tag">ARM CANDY PROGRAM NEVER GIVE UP</p>
+            <p class="voice-banner-text">
+              Abnormalities can be corrected.<br />You can be a happy woman too.
+            </p>
+            <p class="voice-banner-desc">
+              ARM CANDY PROGRAM은 모든 여성들을 정상으로 교정하고 사회의 질서를 유지하기 위해서 존재합니다.<br />변화는 혼란의 시작입니다. 여성들은 생물학적으로, 지적으로, 감정적으로 열등하기에 관리받아야하고 제한당해야합니다.
+            </p>
+            <div class="voice-banner-photo">
+              <img src="images/main/banner-building.png" alt="ARM CANDY PROGRAM 건물" />
+            </div>
+          </div>
+          <div class="voice-banner voice-banner--green" aria-hidden="true">
+            <p class="voice-banner-tag voice-banner-tag--green">Any time you want</p>
+            <p class="voice-banner-text voice-banner-text--outline">
+              24-hour consultation service available
+            </p>
+            <p class="voice-banner-sub">
+              더 이상 망설이지 마세요. ARM CANDY PROGRAM은 언제나 당신을 기다리고 있습니다.<br />아침, 점심, 저녁, 밤, 주말 및 공휴일 언제든지 전화주세요.
+            </p>
+            <p class="voice-banner-desc voice-banner-desc--left">
+              ARM CANDY PROGRAM은 모든 여성들을 정상으로 교정하고 사회의 질서를 유지하기 위해서 존재합니다.<br />변화는 혼란의 시작입니다. 여성들은 생물학적으로, 지적으로, 감정적으로 열등하기에 관리받아야하고 제한당해야합니다.
+            </p>
+            <img class="voice-banner-phone" src="images/main/banner2-photo.png" alt="분홍색 다이얼 전화기" />
+          </div>
         </div>
       </div>
+      <div class="voice-heading">
+        <p class="voice-heading--back">TONS OF REVIEWS, GUARANTEED RESULTS</p>
+        <p class="voice-heading--front">TONS OF REVIEWS, GUARANTEED RESULTS</p>
+      </div>
+      <p class="voice-subheading">
+        수 많은 실제 후기들이 ARM CANDY PROGRAM의 성공적인 효과를 보증합니다
+      </p>
+
       <div class="voice-marquee">
         <div class="voice-track">
           <div class="voice-card">
@@ -410,6 +499,8 @@
     <script src="scale.js"></script>
     <script src="tv-bezel.js"></script>
     <script src="intranet-modal.js"></script>
+    <script src="banner-drag.js"></script>
+    <script src="mini-apply.js"></script>
     <script>
       const screen2Video = document.getElementById('screen2Video');
       const screen2VideoBackdrop = document.getElementById(
@@ -460,5 +551,6 @@
         if (e.key === 'Escape') closeScreen2VideoEnlarged();
       });
     </script>
+    <script src="sticky-header.js"></script>
   </body>
 </html>
