@@ -13,3 +13,9 @@ html * {
     22 13,
     auto !important;
 }
+
+/* GIF 커서(cursor.js)가 켜지면 진짜 커서는 숨긴다. 위의 사탕 커서는 스크립트가 안 돌 때를 위한 대체용이다. */
+html.has-gif-cursor,
+html.has-gif-cursor * {
+  cursor: none !important;
+}

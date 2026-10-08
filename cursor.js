@@ -66,3 +66,49 @@
     true
   );
 })();
+
+/* 마우스 커서: 애니메이션 GIF(images/cursor/cursor_ms2.gif)
+   CSS의 cursor: url(...)은 GIF의 "첫 프레임만" 보여 주기 때문에 움직이지 않는다.
+   그래서 진짜 커서는 숨기고, 마우스를 따라다니는 <img>를 하나 띄워서 GIF가 움직이게 한다.
+   - 마우스가 한 번이라도 움직여야 기본 커서를 숨긴다(스크립트가 안 돌면 기존 사탕 커서가 그대로 남는다).
+   - 이 이미지는 클릭을 가로채지 않는다(pointer-events: none). */
+(function () {
+  var SRC = 'images/cursor/cursor_ms2.gif?v=1';
+  var SIZE = 56; // 화면에 보이는 크기(원본 300px, 캐릭터는 그 안의 약 87%)
+  var HOT_X = 0.53; // 클릭 기준점(이미지 안 비율): 몸통(하트) 중앙
+  var HOT_Y = 0.4;
+
+  var img = document.createElement('img');
+  img.src = SRC;
+  img.alt = '';
+  img.setAttribute('aria-hidden', 'true');
+  img.draggable = false;
+  img.style.cssText =
+    'position:fixed;left:0;top:0;width:' + SIZE + 'px;height:' + SIZE + 'px;' +
+    'pointer-events:none;z-index:2147483646;opacity:0;will-change:transform;' +
+    'user-select:none;-webkit-user-drag:none;';
+  document.documentElement.appendChild(img);
+
+  var shown = false;
+
+  function move(e) {
+    if (e.pointerType && e.pointerType !== 'mouse') return; // 터치/펜은 따로 보여 줄 필요 없음
+    if (!shown) {
+      shown = true;
+      document.documentElement.classList.add('has-gif-cursor');
+    }
+    img.style.opacity = '1';
+    img.style.transform =
+      'translate3d(' + (e.clientX - SIZE * HOT_X) + 'px,' + (e.clientY - SIZE * HOT_Y) + 'px,0)';
+  }
+
+  document.addEventListener('pointermove', move, { passive: true });
+  document.addEventListener('pointerdown', move, { passive: true });
+  // 창 밖으로 나가면 숨긴다
+  document.documentElement.addEventListener('mouseleave', function () {
+    img.style.opacity = '0';
+  });
+  document.documentElement.addEventListener('mouseenter', function () {
+    if (shown) img.style.opacity = '1';
+  });
+})();

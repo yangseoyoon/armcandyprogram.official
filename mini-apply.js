@@ -27,6 +27,11 @@
       }
     }
 
+    // 접수 완료 페이지에서 닫기(X)를 눌렀을 때 신청 페이지가 아니라 이 메인 페이지로 돌아오도록 표시해 둔다
+    // (개발 서버가 .html 주소를 줄이면서 ?from=main 같은 주소 꼬리표를 지워서, 주소 대신 세션에 남긴다)
+    try {
+      sessionStorage.setItem('completeReturn', 'main.html');
+    } catch (err) {}
     window.location.href = btn.getAttribute('href');
   });
 })();

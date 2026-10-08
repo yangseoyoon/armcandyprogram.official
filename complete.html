@@ -57,5 +57,16 @@
     <script>
       document.getElementById('correctAudio').play().catch(() => {});
     </script>
+    <script>
+      // 메인 페이지의 미니 신청 카드에서 왔으면 닫기(X)를 눌렀을 때 신청 페이지가 아니라 방금 있던 메인 페이지로 돌려보낸다.
+      // 신청 페이지에서 왔을 때는 그대로 신청 페이지로 간다. (메인에서 남겨 둔 표시는 한 번 쓰고 지운다)
+      try {
+        var back = sessionStorage.getItem('completeReturn');
+        sessionStorage.removeItem('completeReturn');
+        if (back === 'main.html') {
+          document.querySelector('.popup-close').setAttribute('href', back);
+        }
+      } catch (err) {}
+    </script>
   </body>
 </html>

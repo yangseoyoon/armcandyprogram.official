@@ -337,8 +337,17 @@ body {
   pointer-events: none;
 }
 
+/* 선택하면 테두리와 같은 분홍으로 채워지고, 안의 글자와 아이콘은 흰색이 된다 */
 .mini-apply-type:has(input:checked) {
-  background: #ffc8eb;
+  background: #ff1fac;
+}
+
+.mini-apply-type:has(input:checked) .mini-apply-type-text {
+  color: #fff;
+}
+
+.mini-apply-type:has(input:checked) img {
+  filter: brightness(0) invert(1);
 }
 
 .mini-apply-type-text {
@@ -1146,6 +1155,65 @@ body {
 
 .week-icon-rot--4 { left: 1497.63px; top: 359.8px; width: 285.75px; height: 304.77px; }
 .week-icon-rot--4 img { width: 248.14px; height: 270.79px; transform: rotate(8.58deg); }
+
+/* 호버하면 정지 이미지는 숨기고, 같은 자리에 GIF(week-gif.js가 넣어 줌)를 보여 준다 */
+.week-gif-slot {
+  position: absolute;
+  z-index: 3;
+  top: 331.97px;
+  width: 412.2px;
+  height: 353.32px;
+  pointer-events: none;
+}
+
+.week-gif-slot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.week-gif-slot--1 { left: 76.62px; }
+.week-gif-slot--2 { left: 528.82px; }
+.week-gif-slot--3 { left: 981.02px; }
+.week-gif-slot--4 { left: 1433.22px; }
+
+/* WEEK 1 GIF는 카드 중심 기준으로 110%로 키운다. GIF에 분홍 배경이 같이 들어 있어서 키우면 카드 밖/테두리 위까지 덮으므로,
+   분홍 테두리(5px) 안쪽으로만 보이게 잘라 준다. */
+.week-gif-slot--1 {
+  clip-path: inset(5px);
+}
+
+.week-gif-slot--1 img {
+  transform: translate(-10px, -23px) scale(1.1); /* 왼쪽 10px, 위 23px(화면 기준), 크기는 110% */
+}
+
+/* WEEK 4 GIF는 카드 안 중심을 기준으로 배율을 줄여서 보여 준다(처음 5% 축소 0.95에서 1% 더 줄여 0.9405). */
+
+.week-gif-slot--4 img {
+  transform: scale(0.9405);
+}
+
+/* WEEK 2 GIF는 세로로 선 그림(자 + 두루마리)으로 만들어져 있어서, 정지 이미지와 똑같이 오른쪽(시계 방향)으로 90도 돌려 놓는다.
+   그림이 차지하는 영역(원본 936x1260)을 정지 이미지 크기(332.6x245.8)에 맞추는 배율 0.2635,
+   그림 중심(원본 816,738)이 정지 이미지 중심(카드 안 205.1, 180.3)에 오도록 위치를 잡았고,
+   돌리는 기준점을 그림 중심으로 둬서 돌려도 중심이 안 움직인다. */
+.week-gif-slot--2 img {
+  position: absolute;
+  width: 452.7px;
+  height: 388.1px;
+  left: -9.9px;
+  top: -14.2px;
+  transform-origin: 215px 194.5px;
+  transform: rotate(90deg);
+}
+
+.week-box--1:hover ~ .week-icon--1,
+.week-box--2:hover ~ .week-icon-rot--2,
+.week-box--3:hover ~ .week-icon--3,
+.week-box--4:hover ~ .week-icon-rot--4 {
+  visibility: hidden;
+}
 
 .week-title {
   position: absolute;
