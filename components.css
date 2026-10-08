@@ -139,9 +139,9 @@ body {
 .nav-tabs {
   position: absolute;
   top: 26px;
-  right: 118px;
+  right: 80px;
   display: flex;
-  gap: 120px;
+  gap: 64px;
 }
 
 .nav-tab {
@@ -155,7 +155,7 @@ body {
   line-height: 1;
   color: var(--nav-text);
   text-decoration: none;
-  padding: 10px 12px;
+  padding: 10px 8px;
   white-space: nowrap;
 }
 
@@ -217,7 +217,7 @@ body {
   display: inline;
 }
 
-.nav-dropdown-col--about { left: 1071px; }
+.nav-dropdown-col--about { left: 1190.8px; }
 .nav-dropdown-col--program { left: 1283px; }
 
 /* ---------- 제목 배너 ---------- */
