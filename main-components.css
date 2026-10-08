@@ -373,3 +373,159 @@
   text-shadow: 2px 2px 0 #000;
   text-align: center;
 }
+
+/* ---------- Q&A 섹션 (Figma 2542:403, top 6554 / 1920 x 1373) ---------- */
+.qna-section {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 6554px;
+  width: 1920px;
+  height: calc(1373px + var(--qna-extra, 0px)); /* 답변이 펼쳐진 만큼 늘어난다 */
+  overflow: hidden;
+  background: linear-gradient(to bottom, rgba(255, 30, 171, 0) 55.208%, #ff57c1 102.11%);
+}
+
+.qna-title p {
+  position: absolute;
+  margin: 0;
+  white-space: nowrap;
+  /* 'Futura PT Bold Italic'은 fonts.css에서 이미 기울어진 글꼴에 이어 둔 이름이라 font-style은 normal */
+  font-family: var(--font-futura-bold-italic);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1.03;
+}
+
+.qna-title--back { left: 68.87px; top: 54.06px; color: #000; }
+.qna-title--front { left: 66.87px; top: 52.5px; color: #d3ffc6; }
+
+.qna-sub {
+  position: absolute;
+  left: 69.65px;
+  top: 128.94px;
+  width: 933.35px;
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.5;
+  color: #000;
+}
+
+/* 질문 한 줄: 위에 파란 Q 탭(132x38) + 연두색 막대(1633.75 x 75.46). 줄 간격 138.5px */
+.qna-row {
+  position: absolute;
+  left: 143.35px;
+  width: 1633.75px;
+  height: 113.5px;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.qna-row--1 { top: 276.94px; }
+.qna-row--2 { top: 415.44px; }
+.qna-row--3 { top: 553.94px; }
+.qna-row--4 { top: 692.44px; }
+.qna-row--5 { top: 830.94px; }
+.qna-row--6 { top: 969.44px; }
+.qna-row--7 { top: 1107.94px; }
+
+/* 오른쪽 아래가 비스듬히 깎인 파란 탭 (Figma Rectangle 189를 위아래 뒤집은 모양) */
+.qna-tab {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 132.15px;
+  height: 38.04px;
+  background: #002cd0;
+  clip-path: polygon(0 0, 81.32% 0, 100% 100%, 0 100%);
+}
+
+.qna-num {
+  position: absolute;
+  left: 30.96px;
+  top: 0;
+  width: 55.82px;
+  height: 38.04px;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-futura-bold-italic);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1;
+  color: #fff;
+}
+
+.qna-bar {
+  position: absolute;
+  left: 0;
+  top: 38.04px;
+  width: 100%;
+  height: 75.46px;
+  background: #e2fbb9;
+  border: 2px solid #002cd0;
+  transition: background-color 0.15s ease;
+}
+
+.qna-row:hover .qna-bar {
+  background: #fff;
+}
+
+.qna-q {
+  position: absolute;
+  left: 28.37px;
+  top: 57.4px;
+  width: 1500px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.413;
+  color: #000;
+  white-space: nowrap;
+}
+
+/* 질문을 누르면 막대 아래로 펼쳐지는 답변. 위치/높이는 main-qna.js가 계산한다. */
+.qna-row,
+.qna-answer {
+  transition: top 0.25s ease;
+}
+
+.qna-answer {
+  position: absolute;
+  left: 143.35px;
+  width: 1633.75px;
+  display: none;
+  padding: 0 28px 28px; /* 점선이 막대 아래 경계에 바로 붙는다 */
+  background: #e2fbb9;
+  border: 2px solid #002cd0;
+  border-top: 0;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.qna-answer.is-open {
+  display: block;
+}
+
+/* FAQs 페이지처럼 질문과 답변 사이 점선 */
+.qna-answer::before {
+  content: '';
+  display: block;
+  margin-bottom: 20px;
+  border-top: 2px dashed #002cd0;
+}
+
+.qna-answer p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.413;
+  color: #000;
+}

@@ -35,6 +35,18 @@ body {
   transform-origin: center center;
 }
 
+/* 마우스 커서에 쓰는 GIF(cursor_ms2.gif)를 원본 크기(300x300) 그대로, 접속중 문구 바로 위 가운데에 */
+.loading-gif {
+  position: absolute;
+  left: 50%;
+  top: 189px; /* 문구(top 509) 위로 300px + 20px 여백 */
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  pointer-events: none;
+  user-select: none;
+}
+
 .loading-text {
   position: absolute;
   left: 50%;

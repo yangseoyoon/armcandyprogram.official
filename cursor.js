@@ -76,7 +76,7 @@
      어디가 눌리는지 정확히 보이게 한다. */
 (function () {
   var SRC = 'images/cursor/cursor_ms2.gif?v=1';
-  var SIZE = 56; // 화면에 보이는 크기(원본 300px, 캐릭터는 그 안의 약 87%)
+  var SIZE = 76;// 화면에 보이는 크기(원본 300px, 캐릭터는 그 안의 약 87%)
   var HOT_X = 0.53; // 클릭 기준점(이미지 안 비율): 몸통(하트) 중앙
   var HOT_Y = 0.4;
 
@@ -125,4 +125,39 @@
   document.documentElement.addEventListener('mouseenter', function () {
     if (shown && !overClickable) img.style.opacity = '1';
   });
+})();
+
+/* 마우스 클릭 소리(audio/mouse-click.mp3)
+   마우스 왼쪽 버튼을 누르는 순간 짧은 클릭 소리가 난다(모든 페이지).
+   - 빠르게 연타해도 소리가 끊기지 않게 같은 소리를 4개 돌려가며 쓴다.
+   - 브라우저는 사용자가 직접 누른 이벤트 안에서만 소리 재생을 허용하므로 pointerdown 안에서 바로 재생한다. */
+(function () {
+  var SRC = 'audio/mouse-click.mp3';
+  var VOLUME = 0.7;
+  var POOL = 4;
+
+  var pool = [];
+  for (var i = 0; i < POOL; i++) {
+    var a = new Audio(SRC);
+    a.preload = 'auto';
+    a.volume = VOLUME;
+    pool.push(a);
+  }
+  var next = 0;
+
+  document.addEventListener(
+    'pointerdown',
+    function (e) {
+      if (e.pointerType && e.pointerType !== 'mouse') return; // 터치/펜은 제외(마우스 클릭만)
+      if (e.button !== undefined && e.button !== 0) return; // 왼쪽 버튼만
+      var a = pool[next];
+      next = (next + 1) % POOL;
+      try {
+        a.currentTime = 0;
+        var p = a.play();
+        if (p && p.catch) p.catch(function () {});
+      } catch (err) {}
+    },
+    true
+  );
 })();

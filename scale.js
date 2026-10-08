@@ -1,9 +1,9 @@
 (function () {
   const stage = document.querySelector('.stage');
-  const stageHeight = stage.offsetHeight || 1079;
   const crtFrame = document.querySelector('.crt-frame');
   const crtScaled = document.querySelector('.crt-scaled');
   function fit() {
+    const stageHeight = stage.offsetHeight || 1079; // 매번 다시 읽는다(Q&A처럼 펼쳐져서 높이가 변하는 페이지용)
     const scale = document.documentElement.clientWidth / 1920;
     document.body.style.height = (stageHeight * scale) + 'px';
     if (crtFrame && crtScaled) {

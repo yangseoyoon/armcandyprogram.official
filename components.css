@@ -173,7 +173,7 @@ body {
 }
 
 .nav-wrap:hover .nav-dropdown,
-.nav-wrap:focus-within .nav-dropdown {
+.nav-wrap:has(:focus-visible) .nav-dropdown {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;

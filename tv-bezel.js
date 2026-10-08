@@ -8,7 +8,6 @@
   // 다시 켜려면 true로만 바꾸면 된다. (검정 틀 두께는 화면 크기와 무관하게 고정 30px)
   const SHOW_BEZEL = false;
   const BORDER = SHOW_BEZEL ? 30 : 0;
-  const stageHeight = stage.offsetHeight || 1079;
 
   // 스크롤 도중에도 틀이 화면에 계속 떠 있도록, body 여백(맨 위/아래 버퍼용)과는
   // 별개로 뷰포트에 고정된 "둥근 창" 하나를 항상 맨 위 레이어에 얹는다.
@@ -28,6 +27,7 @@
   // 이게 지난번 버그였다). 대신 화면 비율에 따라 콘텐츠가 가로/세로로
   // 약간 눌리거나 늘어날 수 있다.
   function applyBezel() {
+    const stageHeight = stage.offsetHeight || 1079; // 매번 다시 읽는다(Q&A처럼 펼쳐져서 높이가 변하는 페이지용)
     const vw = document.documentElement.clientWidth;
     const vh = window.innerHeight;
     const scale = vw / 1920;
