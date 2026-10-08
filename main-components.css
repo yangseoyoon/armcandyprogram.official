@@ -1,0 +1,375 @@
+/* 메인 페이지의 '프로그램 구성품' 책상 장면 (Figma 2474:816).
+   예전에 NAV > 프로그램 > 프로그램 구성품(components.html)에 있던 장면과 팝업 기능을 그대로 스크롤 안으로 옮겼다.
+   - 책(프로그램 북) / 모니터 / 파스텔 노트(매뉴얼 북) / 전화기를 누르면 각각 팝업이 뜬다.
+   - 팝업은 .stage(축소 변환) 바깥의 #compModals 안에 있고, 1920x1080 판을 화면에 맞춰 축소해서 보여 준다. */
+
+/* ---------- 책상 장면 (top 4385, 1920 x 1098.81) ---------- */
+.desk-scene {
+  position: absolute;
+  z-index: 2;
+  left: 0.24px;
+  top: 4385px;
+  width: 1919.51px;
+  height: 1098.81px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.desk-scene img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 위쪽 리뷰 영역과 자연스럽게 이어지도록 위에서 아래로 옅어지는 분홍 그라데이션 (Figma Rectangle 485) */
+.desk-gradient {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 4385px;
+  width: 1922.76px;
+  height: 472px;
+  background: linear-gradient(to bottom, #ffc8eb 0%, rgba(255, 200, 235, 0) 33.686%);
+  pointer-events: none;
+}
+
+/* ---------- 구성품 4개 (누르면 팝업) ---------- */
+.component-object {
+  position: absolute;
+  z-index: 4;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.component-object img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.component-object:hover img {
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.9));
+}
+
+/* 위치: components.html의 책상 장면(1919.51 x 1082.59)에서 이 장면(object-fit: cover, 배율 1.0150)으로 환산 */
+.component-object--programbook { left: 132.03px; top: 4996.83px; width: 371.36px; height: 341.72px; }
+.component-object--monitor { left: 677.29px; top: 4492.41px; width: 565.43px; height: 580.49px; }
+.component-object--manualbook { left: 1139.8px; top: 5004.28px; width: 511.2px; height: 368.62px; }
+.component-object--call { left: 1333.62px; top: 4744.81px; width: 470.22px; height: 361.58px; }
+
+/* ---------- 팝업 루트: 화면 전체를 어둡게 덮고, 안쪽 1920x1080 판을 화면에 맞춰 축소 ---------- */
+.comp-modals {
+  position: fixed;
+  z-index: 1500;
+  inset: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+  --font-futura-heavy: 'Futura PT Demi', 'Futura PT', sans-serif;
+}
+
+.comp-modals.is-open { display: block; }
+.comp-modals.is-dark { background: rgba(7, 7, 7, 0.7); }
+
+.comp-modals-canvas {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1920px;
+  height: 1080px;
+  margin: -540px 0 0 -960px;
+  transform-origin: center center;
+}
+
+.comp-modals .product-modal-overlay {
+  background: none;
+}
+
+/* 모니터 클릭 시 뜨는 영상 팝업 창 (다른 팝업과 동일한 파란 타이틀바 + 흰 테두리 느낌) */
+.monitor-video-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  background: #000;
+  border: 3px solid var(--ticker-bg);
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.monitor-video-box video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 42px;
+}
+
+.monitor-video-box .manual-modal-topbar {
+  width: 800px;
+}
+
+.monitor-video-box .manual-modal-close {
+  left: 765px;
+}
+
+/* ---------- 구성품 설명 팝업 (임시 플레이스홀더) ---------- */
+.product-modal-overlay {
+  position: absolute;
+  z-index: 20;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.product-modal-overlay.is-open {
+  display: block;
+}
+
+.manual-modal-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 639px;
+  height: 267px;
+  background: linear-gradient(to bottom, #fff, #e0ff9d);
+  border: 3px solid var(--ticker-bg);
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.manual-modal-topbar {
+  position: absolute;
+  left: 0.1px;
+  top: -2.3px;
+  width: 639px;
+  height: 44px;
+  background: var(--ticker-bg);
+  overflow: hidden;
+}
+
+.manual-modal-topbar span {
+  position: absolute;
+  left: 18.45px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-futura-demi);
+  font-weight: 400; /* Futura PT는 굵기별 패밀리라 weight를 또 주면 가짜 볼드가 겹친다 */
+  font-size: 22px;
+  color: var(--card-green);
+  white-space: nowrap;
+}
+
+.manual-modal-close {
+  position: absolute;
+  left: 604px;
+  top: 11.5px;
+  width: 25px;
+  height: 21px;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.manual-modal-close img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.manual-modal-desc {
+  position: absolute;
+  left: 15px;
+  top: 82px;
+  width: 609px;
+  margin: 0;
+  font-family: var(--font-pixel);
+  font-size: 20px;
+  line-height: 44px;
+  color: #000;
+}
+
+/* ---------- 분홍색 책(가이드 북) 팝업: Figma 프로그램-상세구성 페이지 (2363:524) ---------- */
+.guide-modal-overlay {
+  background: rgba(7, 7, 7, 0.7);
+}
+
+/* 확대된 책: 1099.04x820.62 이미지를 25.82도 돌려서 (562.74, 617.17)을 중심으로 배치 */
+.guide-modal-book {
+  position: absolute;
+  left: 562.74px;
+  top: 617.17px;
+  width: 1099.04px;
+  height: 820.62px;
+  transform: translate(-50%, -50%) rotate(25.82deg);
+  pointer-events: none;
+}
+
+.guide-modal-book img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.guide-modal-box {
+  position: absolute;
+  left: 783.32px;
+  top: 394.17px;
+  width: 639px;
+  height: 223px;
+  background: linear-gradient(to bottom, #fff, #e0ff9d);
+  border: 3px solid var(--ticker-bg);
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+/* ---------- 파스텔 노트(매뉴얼 북) 팝업: Figma (2363:685) ---------- */
+.manual-book-image {
+  position: absolute;
+  left: 72.07px;
+  top: 270.01px;
+  width: 911.34px;
+  height: 680.47px;
+  pointer-events: none;
+}
+
+.manual-book-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.manual-book-box {
+  position: absolute;
+  left: 788.06px;
+  top: 398.8px;
+  width: 639px;
+  height: 267px;
+  background: linear-gradient(to bottom, #fff, #e0ff9d);
+  border: 3px solid var(--ticker-bg);
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+/* 시안의 text-box-trim(줄 위아래 여백 제거) 때문에 본문이 시안보다 18px 위에 와야 같은 위치가 된다 */
+.guide-modal-box .manual-modal-desc,
+.manual-book-box .manual-modal-desc {
+  top: 64px;
+}
+
+/* ---------- 전화기 클릭 시 뜨는 안내음성 메세지 팝업 ---------- */
+.call-modal-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 300px;
+  background: linear-gradient(to bottom, #fff, #e0ff9d);
+  border: 3px solid var(--ticker-bg);
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.call-modal-pink-fade {
+  position: absolute;
+  left: 0;
+  top: 100px;
+  width: 800px;
+  height: 200px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ff0ea5);
+  pointer-events: none;
+}
+
+.call-modal-topbar {
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 800px;
+  height: 44px;
+  background: var(--ticker-bg);
+  overflow: hidden;
+}
+
+.call-modal-topbar span {
+  position: absolute;
+  left: 18.45px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-futura-heavy);
+  font-size: 22px;
+  color: var(--card-green);
+  white-space: nowrap;
+}
+
+.call-modal-close {
+  position: absolute;
+  right: 10px;
+  top: 11.5px;
+  width: 25px;
+  height: 21px;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.call-modal-close img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.call-modal-status {
+  position: absolute;
+  left: 50%;
+  top: 56px;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 36px;
+  color: #fe23a8;
+  white-space: nowrap;
+}
+
+.call-modal-photo {
+  position: absolute;
+  left: 50%;
+  top: 110px;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+}
+.call-modal-photo img,
+.call-modal-photo video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.call-modal-subtitle {
+  position: absolute;
+  left: 50%;
+  top: 307px;
+  transform: translateX(-50%);
+  margin: 0;
+  width: 750px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.42;
+  color: #fff;
+  text-shadow: 2px 2px 0 #000;
+  text-align: center;
+}

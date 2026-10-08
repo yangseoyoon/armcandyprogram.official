@@ -16,6 +16,7 @@
     />
 
     <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="main-components.css" />
     <link rel="stylesheet" href="crt-effect.css" />
     <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="cursor.css" />
@@ -365,6 +366,25 @@
         </div>
       </div>
 
+      <!-- 프로그램 구성품: 책상 장면. 책 / 모니터 / 파스텔 노트 / 전화기를 누르면 팝업(예전 components.html과 같은 기능) -->
+      <div class="desk-scene" aria-hidden="true">
+        <img src="images/components/desk-scene.png" alt="" />
+      </div>
+      <div class="desk-gradient" aria-hidden="true"></div>
+
+      <button type="button" class="component-object component-object--programbook" data-modal="guideModalOverlay" aria-label="프로그램 북 설명 보기">
+        <img src="images/components/programbook.png" alt="" />
+      </button>
+      <button type="button" class="component-object component-object--monitor" data-modal="monitorVideoModalOverlay" aria-label="모니터 영상 보기">
+        <img src="images/components/monitor.png" alt="" />
+      </button>
+      <button type="button" class="component-object component-object--manualbook" data-modal="manualModalOverlay" aria-label="매뉴얼 북 설명 보기">
+        <img src="images/components/manualbook.png" alt="" />
+      </button>
+      <button type="button" class="component-object component-object--call" data-modal="callVoiceModalOverlay" aria-label="전화기 안내음성 듣기">
+        <img src="images/components/call.png" alt="" />
+      </button>
+
       <!-- OUR 4 WEEK PROCESS -->
       <div class="process-section">
         <div class="process-title">
@@ -485,6 +505,85 @@
       aria-hidden="true"
     ></div>
 
+    <!-- 프로그램 구성품 팝업 4종 (components.html에서 옮김).
+         .stage(축소 변환) 바깥에 둬야 스크롤 위치와 상관없이 화면 한가운데에 뜬다.
+         안쪽 .comp-modals-canvas는 1920x1080 판이고 main-components.js가 화면에 맞춰 축소한다. -->
+    <div class="comp-modals" id="compModals" aria-hidden="true">
+      <div class="comp-modals-canvas">
+        <!-- 분홍색 책(프로그램 북) -->
+        <div class="product-modal-overlay guide-modal-overlay" id="guideModalOverlay" data-dark="true">
+          <div class="guide-modal-book">
+            <img src="images/components/guide-book-open.png" alt="" />
+          </div>
+          <div class="guide-modal-box">
+            <div class="manual-modal-topbar">
+              <span>ARM CANDY PROGRAM 가이드 북</span>
+              <button type="button" class="manual-modal-close" aria-label="닫기">
+                <img src="images/shop/product-modal-close.svg" alt="" />
+              </button>
+            </div>
+            <p class="manual-modal-desc">
+              ARM CANDY PROGRAM™의 구조와 운영 체계를 소개하는 공식 프로그램
+              가이드북이다. 프로그램의 철학과 교정 과정, 프로그램에 관한 설명 등
+              ARM CANDY PROGRAM™의 관한 전반적인 설명이 담겨있다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 파스텔 노트 묶음(매뉴얼 북) -->
+        <div class="product-modal-overlay guide-modal-overlay" id="manualModalOverlay" data-dark="true">
+          <div class="manual-book-image">
+            <img src="images/components/manual-book-open.png" alt="" />
+          </div>
+          <div class="manual-book-box">
+            <div class="manual-modal-topbar">
+              <span>ARM CANDY PROGRAM 매뉴얼 북</span>
+              <button type="button" class="manual-modal-close" aria-label="닫기">
+                <img src="images/shop/product-modal-close.svg" alt="" />
+              </button>
+            </div>
+            <p class="manual-modal-desc">
+              교정 대상자가 4주간 프로그램을 수행하기 위해 사용하는 교정 매뉴얼
+              북이다. 각 유형별 교정 목표와 주차별 행동 지침 등을 수록하여
+              대상자가 스스로 자신의 행동과 외형을 점검하고 프로그램을 단계적으로
+              수행할 수 있도록 구성되어 있다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 모니터: 영상 팝업 창 -->
+        <div class="product-modal-overlay" id="monitorVideoModalOverlay">
+          <div class="monitor-video-box">
+            <div class="manual-modal-topbar">
+              <span>video</span>
+              <button type="button" class="manual-modal-close" aria-label="닫기">
+                <img src="images/shop/product-modal-close.svg" alt="" />
+              </button>
+            </div>
+            <video id="monitorVideo" src="images/main/candy-video.mp4" loop playsinline preload="none"></video>
+          </div>
+        </div>
+
+        <!-- 전화기: 안내음성 메세지 팝업 -->
+        <div class="product-modal-overlay" id="callVoiceModalOverlay">
+          <div class="call-modal-box">
+            <div class="call-modal-pink-fade" aria-hidden="true"></div>
+            <div class="call-modal-topbar">
+              <span>안내음성 메세지</span>
+              <button type="button" class="call-modal-close" aria-label="닫기">
+                <img src="images/components/call-modal-close.svg" alt="" />
+              </button>
+            </div>
+            <p class="call-modal-status">재생 중...</p>
+            <div class="call-modal-photo">
+              <img src="images/components/call-icon.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <audio id="callVoiceAudio" src="audio/call-voice.mp3" preload="none"></audio>
+
     <!-- 인트라넷 접속 안내 팝업: .stage 바깥(뷰포트 기준 고정)에 둬야 긴 페이지에서도 항상 화면 중앙에 뜬다 -->
     <div class="intranet-modal" aria-hidden="true">
       <div class="intranet-modal-box">
@@ -507,6 +606,7 @@
     <script src="banner-drag.js"></script>
     <script src="mini-apply.js"></script>
     <script src="week-gif.js"></script>
+    <script src="main-components.js"></script>
     <script>
       const screen2Video = document.getElementById('screen2Video');
       const screen2VideoBackdrop = document.getElementById(

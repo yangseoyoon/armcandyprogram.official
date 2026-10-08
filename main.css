@@ -33,7 +33,7 @@ body {
 .stage {
   position: relative;
   width: 1920px;
-  height: 6568px;
+  height: 7651px;
   background: linear-gradient(to bottom, var(--pink-top), var(--pink-bottom));
   overflow: hidden;
   font-family: var(--font-body);
@@ -460,29 +460,28 @@ body {
   overflow: hidden;
 }
 
-/* Figma: 2026.68x1224.75 이미지를 1920x1080 프레임 정중앙에 배치(넘치는 부분은 잘림) */
+/* 이미지 원본 크기(1920x1080) 그대로, 섹션 정중앙에 배치. */
 .screen2-monitor {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 2026.68px;
-  height: 1224.75px;
+  width: auto;
+  height: auto;
   max-width: none;
   pointer-events: none;
 }
 
-/* 모니터 화면(안쪽 회색 유리) 영역에 맞춘 영상.
+/* 영상 원본 크기(800x600) 그대로, 모니터 화면(투명 구멍 x 367~1561, y 112~945) 한가운데에 배치.
    클릭하면 소리와 함께 재생, 더블클릭하면 800x600 크기로 확대 */
 .screen2-video {
   position: absolute;
   z-index: 3;
-  left: 200px;
-  top: 1218px;
-  width: 1512px;
-  height: 780px;
+  left: 564px;
+  top: 1306px;
+  width: 800px;
+  height: 600px;
   object-fit: cover;
-  border-radius: 26px;
   cursor: pointer;
 }
 
@@ -1018,7 +1017,7 @@ body {
   position: absolute;
   z-index: 1;
   left: 0;
-  top: 4385px;
+  top: 5477px; /* Figma 프레임 4 (5474.24) + 안쪽 요소 3px 보정 */
   width: 1920px;
   height: 1080px;
   background: #d3ffc6;
@@ -1282,7 +1281,7 @@ body {
   position: absolute;
   z-index: 1;
   left: 0;
-  top: 5462px;
+  top: 6545px;
   width: 1920px;
   height: 748px;
   background: #ffc8eb;
@@ -1371,7 +1370,7 @@ body {
   position: absolute;
   z-index: 1;
   left: 0;
-  top: 6210px;
+  top: 7293px;
   width: 1920px;
   height: 358px;
   background: var(--ticker-bg);

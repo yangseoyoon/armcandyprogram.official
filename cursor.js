@@ -71,7 +71,9 @@
    CSS의 cursor: url(...)은 GIF의 "첫 프레임만" 보여 주기 때문에 움직이지 않는다.
    그래서 진짜 커서는 숨기고, 마우스를 따라다니는 <img>를 하나 띄워서 GIF가 움직이게 한다.
    - 마우스가 한 번이라도 움직여야 기본 커서를 숨긴다(스크립트가 안 돌면 기존 사탕 커서가 그대로 남는다).
-   - 이 이미지는 클릭을 가로채지 않는다(pointer-events: none). */
+   - 이 이미지는 클릭을 가로채지 않는다(pointer-events: none).
+   - 링크/버튼 같은 클릭할 수 있는 곳 위에서는 GIF를 숨기고 브라우저 기본 커서(cursor.css)로 바꿔서
+     어디가 눌리는지 정확히 보이게 한다. */
 (function () {
   var SRC = 'images/cursor/cursor_ms2.gif?v=1';
   var SIZE = 56; // 화면에 보이는 크기(원본 300px, 캐릭터는 그 안의 약 87%)
@@ -90,6 +92,16 @@
   document.documentElement.appendChild(img);
 
   var shown = false;
+  var overClickable = false;
+  var CLICKABLE =
+    'a[href], button, input, select, textarea, label, summary, video, [role="button"], [onclick], [tabindex]:not([tabindex="-1"])';
+
+  function setClickable(on) {
+    if (on === overClickable) return;
+    overClickable = on;
+    document.documentElement.classList.toggle('on-clickable', on);
+    img.style.opacity = on ? '0' : '1';
+  }
 
   function move(e) {
     if (e.pointerType && e.pointerType !== 'mouse') return; // 터치/펜은 따로 보여 줄 필요 없음
@@ -97,7 +109,9 @@
       shown = true;
       document.documentElement.classList.add('has-gif-cursor');
     }
-    img.style.opacity = '1';
+    var t = e.target;
+    setClickable(!!(t && t.closest && t.closest(CLICKABLE)));
+    if (!overClickable) img.style.opacity = '1';
     img.style.transform =
       'translate3d(' + (e.clientX - SIZE * HOT_X) + 'px,' + (e.clientY - SIZE * HOT_Y) + 'px,0)';
   }
@@ -109,6 +123,6 @@
     img.style.opacity = '0';
   });
   document.documentElement.addEventListener('mouseenter', function () {
-    if (shown) img.style.opacity = '1';
+    if (shown && !overClickable) img.style.opacity = '1';
   });
 })();

@@ -1,21 +1,43 @@
-/* 사이트 전체 마우스 커서: Figma 사탕 커서(2444:2813).
-   hover·텍스트 입력 등 개별 cursor 지정(pointer, text 등)까지 모두 같은
-   사탕으로 덮어쓰려고 전체 요소에 !important로 건다.
-   (이미지를 바꾸면 ?v= 숫자도 올릴 것: 브라우저가 커서 이미지를 오래 캐시한다)
-   표시 크기 45x26(hotspot은 사탕 중앙), 고해상도 화면용 2x 이미지 포함. */
-html,
-html * {
-  cursor: url('images/cursor/cursor.png?v=3') 22 13, auto !important;
-  cursor: -webkit-image-set(
-      url('images/cursor/cursor.png?v=3') 1x,
-      url('images/cursor/cursor@2x.png?v=3') 2x
-    )
-    22 13,
-    auto !important;
+/* 마우스 커서: 평소에는 진짜 커서를 숨기고 cursor.js의 움직이는 GIF 캐릭터가 따라다닌다.
+   링크/버튼 같은 클릭할 수 있는 곳 위(.on-clickable)에서는 GIF가 사라지고 브라우저 기본 커서(손가락 등)가 나온다.
+   (예전 사탕 모양 커서는 쓰지 않는다. 스크립트가 안 돌면 그냥 기본 커서가 보인다.) */
+html.has-gif-cursor:not(.on-clickable),
+html.has-gif-cursor:not(.on-clickable) * {
+  cursor: none !important;
 }
 
-/* GIF 커서(cursor.js)가 켜지면 진짜 커서는 숨긴다. 위의 사탕 커서는 스크립트가 안 돌 때를 위한 대체용이다. */
-html.has-gif-cursor,
-html.has-gif-cursor * {
-  cursor: none !important;
+/* 클릭할 수 있는 곳: 기본 커서 */
+html.has-gif-cursor.on-clickable,
+html.has-gif-cursor.on-clickable * {
+  cursor: auto !important;
+}
+
+html.has-gif-cursor.on-clickable a[href],
+html.has-gif-cursor.on-clickable a[href] *,
+html.has-gif-cursor.on-clickable button,
+html.has-gif-cursor.on-clickable button *,
+html.has-gif-cursor.on-clickable label,
+html.has-gif-cursor.on-clickable label *,
+html.has-gif-cursor.on-clickable summary,
+html.has-gif-cursor.on-clickable select,
+html.has-gif-cursor.on-clickable video,
+html.has-gif-cursor.on-clickable [role="button"],
+html.has-gif-cursor.on-clickable [onclick],
+html.has-gif-cursor.on-clickable input[type="checkbox"],
+html.has-gif-cursor.on-clickable input[type="radio"],
+html.has-gif-cursor.on-clickable input[type="submit"],
+html.has-gif-cursor.on-clickable input[type="button"] {
+  cursor: pointer !important;
+}
+
+/* 글자를 입력하는 칸은 글자 입력 커서 */
+html.has-gif-cursor.on-clickable input:not([type]),
+html.has-gif-cursor.on-clickable input[type="text"],
+html.has-gif-cursor.on-clickable input[type="tel"],
+html.has-gif-cursor.on-clickable input[type="email"],
+html.has-gif-cursor.on-clickable input[type="search"],
+html.has-gif-cursor.on-clickable input[type="password"],
+html.has-gif-cursor.on-clickable input[type="number"],
+html.has-gif-cursor.on-clickable textarea {
+  cursor: text !important;
 }
