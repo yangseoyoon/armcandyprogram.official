@@ -44,6 +44,9 @@ body {
   width: 1920px;
   height: 1093px;
   max-width: none;
+  /* 서랍 배경을 스테이지 정중앙(960,540) 기준으로 10% 확대. 모든 서랍/파일철 페이지 공통 */
+  transform: scale(1.1);
+  transform-origin: 960px 540px;
 }
 
 /* ---------- 어둠 효과 ---------- */

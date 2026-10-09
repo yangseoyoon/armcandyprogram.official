@@ -73,7 +73,7 @@ body {
   width: 688px;
   height: 36px;
   padding: 5px;
-  border: 3px solid #fff;
+  border: 3px solid #ff1fac;
   overflow: hidden;
 }
 
@@ -81,7 +81,7 @@ body {
   width: 0;
   height: 100%;
   /* 18px 칸 + 6px 틈 = 24px 단위, 28칸 = 672px */
-  background: repeating-linear-gradient(to right, #fff 0, #fff 18px, transparent 18px, transparent 24px);
+  background: repeating-linear-gradient(to right, #ff1fac 0, #ff1fac 18px, transparent 18px, transparent 24px);
   animation: loading-fill var(--loading-duration, 4s) steps(28, end) forwards;
 }
 

@@ -81,14 +81,19 @@
     <script src="folder-scale.js"></script>
     <script>
       const connectAudio = document.getElementById('connectAudio');
-      // 뒤로가기(bfcache 복원 등 back_forward 내비게이션)로 이 페이지에 왔을 때는
-      // "접속하셨습니다" 팝업/사운드를 다시 띄우지 않는다.
+      // "접속하셨습니다" 팝업/사운드는 로딩 화면을 거쳐 막 접속했을 때만 띄운다.
+      // 인트라넷 안에서 '뒤로가기'로 돌아왔거나 브라우저 뒤로가기(back_forward)로 온 경우에는 띄우지 않는다.
       const navEntry = performance.getEntriesByType('navigation')[0];
       const isBackForward = navEntry
         ? navEntry.type === 'back_forward'
         : performance.navigation && performance.navigation.type === 2;
+      let justConnected = false;
+      try {
+        justConnected = sessionStorage.getItem('intranetJustConnected') === '1';
+        sessionStorage.removeItem('intranetJustConnected');
+      } catch (e) {}
 
-      if (!isBackForward) {
+      if (justConnected && !isBackForward) {
         document.getElementById('connectedModal').classList.add('is-open');
         connectAudio.play().catch(() => {});
       }
@@ -112,7 +117,7 @@
 
       document.getElementById('exitYes').addEventListener('click', () => {
         const entryPage =
-          sessionStorage.getItem('intranetEntryPage') || 'apply.html';
+          sessionStorage.getItem('intranetEntryPage') || 'main.html';
         window.location.href = entryPage;
       });
     </script>

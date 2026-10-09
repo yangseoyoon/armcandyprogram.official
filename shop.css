@@ -1209,6 +1209,7 @@ body {
   width: 882px;
   height: 266px;
   background: rgba(0, 0, 0, 0.7);
+  transform: scale(0.9); /* 팝업 전체(글자/버튼 포함) 10% 축소 */
 }
 
 .intranet-modal-text {

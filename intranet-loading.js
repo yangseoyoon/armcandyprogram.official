@@ -7,6 +7,10 @@ document.documentElement.style.setProperty('--loading-duration', LOADING_DURATIO
 
 setTimeout(() => {
   if (REDIRECT_TARGET) {
+    // 로딩을 거쳐 들어온 것만 "접속하셨습니다" 팝업/사운드를 띄우도록 표시해 둔다(intranet-connected.html이 한 번 쓰고 지움)
+    try {
+      sessionStorage.setItem('intranetJustConnected', '1');
+    } catch (e) {}
     window.location.href = REDIRECT_TARGET;
   }
 }, LOADING_DURATION_MS);

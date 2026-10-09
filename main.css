@@ -249,14 +249,16 @@ body {
 .mini-apply {
   position: absolute;
   z-index: 3;
-  left: 1460px;
-  top: 411px; /* 136 + 295 에서 20px 위로 */
+  left: 1450px;
+  top: 371px; /* 136 + 295 에서 60px 위로 (20px + 40px) */
   width: 381px;
   height: 518px;
   background: var(--card-green);
-  border: 0.5px solid #000;
-  box-shadow: 3px 3px 1.8px 0 rgba(0, 0, 0, 0.37);
+  border: 1.5px solid #000;
+  box-shadow: 5px 5px 2px 0 rgba(0, 0, 0, 0.6);
   overflow: hidden;
+  transform: scale(1.1); /* 패널 전체(글자/입력칸/버튼 포함) 10% 확대. 중심 위치는 그대로 */
+  transform-origin: center center;
 }
 
 .mini-apply > * {
@@ -479,12 +481,48 @@ body {
 .screen2-video {
   position: absolute;
   z-index: 1;
-  left: 354px; /* 섹션(top 1078.05) 안 좌표: 페이지 기준 top 1186px */
-  top: 107.95px;
+  left: 354px; /* 섹션(top 1078.05) 안 좌표: 페이지 기준 top 1181px */
+  top: 102.95px;
   width: 1220px;
   height: 840px;
   object-fit: cover;
   cursor: pointer;
+}
+
+/* 영상 위 안내 문구: Pretendard Bold 40px, #d3ffc6. 위아래로 둥실둥실 움직이고, 영상을 클릭하면 사라진다.
+   위치: 모니터 화면(구멍) 가운데 가로, 영상 위쪽 빈 분홍 영역 */
+.screen2-hint {
+  position: absolute;
+  z-index: 3;
+  left: 964px;
+  top: 195px;
+  margin: 0;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.2;
+  color: #d3ffc6;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none; /* 클릭은 아래 영상이 받는다 */
+  animation: screen2-hint-bob 1.2s ease-in-out infinite;
+  transition: opacity 0.2s ease;
+}
+
+.screen2-hint.is-hidden {
+  opacity: 0;
+  animation: none;
+  visibility: hidden;
+}
+
+@keyframes screen2-hint-bob {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -14px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen2-hint { animation: none; }
 }
 
 .screen2-video.is-enlarged {
@@ -1238,7 +1276,7 @@ body {
 .week-heading {
   position: absolute;
   z-index: 2;
-  top: 705.19px;
+  top: 725.29px;
   margin: 0;
   font-family: var(--font-body);
   font-weight: 700;
@@ -1253,8 +1291,7 @@ body {
 .week-heading--3 { left: 981.02px; }
 .week-heading--4 { left: 1433.22px; }
 
-.week-kr,
-.week-en {
+.week-kr {
   position: absolute;
   z-index: 2;
   margin: 0;
@@ -1265,18 +1302,12 @@ body {
   color: #000;
 }
 
-.week-kr { top: 774.09px; font-weight: 500; }
-.week-en { font-weight: 400; }
+.week-kr { top: 794.19px; font-weight: 500; }
 
-.week-kr--1, .week-en--1 { left: 76.62px; }
-.week-kr--2, .week-en--2 { left: 528.82px; }
-.week-kr--3, .week-en--3 { left: 981.02px; }
-.week-kr--4, .week-en--4 { left: 1433.22px; }
-
-.week-en--1 { top: 846px; }
-.week-en--2 { top: 876.09px; }
-.week-en--3 { top: 874.09px; }
-.week-en--4 { top: 901.05px; }
+.week-kr--1 { left: 76.62px; }
+.week-kr--2 { left: 528.82px; }
+.week-kr--3 { left: 981.02px; }
+.week-kr--4 { left: 1433.22px; }
 
 /* ---------- PERFECTION THAT LASTS FOREVER ---------- */
 .perfection-section {
@@ -1438,6 +1469,7 @@ body {
   width: 882px;
   height: 266px;
   background: rgba(0, 0, 0, 0.7);
+  transform: scale(0.9); /* 팝업 전체(글자/버튼 포함) 10% 축소 */
 }
 
 .intranet-modal-text {
@@ -1481,7 +1513,6 @@ body {
 /* Figma 줄바꿈을 그대로 재현하려고 일부 문단은 <br>로 줄을 고정했다(폭이 넘쳐도 다시 줄바꿈하지 않음) */
 .pain-paragraph,
 .week-kr,
-.week-en,
 .voice-text--fixed,
 .perfection-paragraph p {
   white-space: nowrap;

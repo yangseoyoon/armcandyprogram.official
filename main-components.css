@@ -478,6 +478,31 @@
   background: #fff;
 }
 
+/* 막대 오른쪽 끝의 아래쪽 삼각형(Figma Polygon 6): 위아래로 살짝 움직여서 '눌러서 아래로 열어 보라'는 것을 암시한다 */
+.qna-arrow {
+  position: absolute;
+  left: 1571.33px; /* 원래 크기(27.1x23.47) 때의 중심을 유지한 채 절반 크기로 */
+  top: 73.8px;
+  width: 13.55px;
+  height: 11.74px;
+  pointer-events: none;
+  animation: qna-arrow-bob 1s ease-in-out infinite;
+}
+
+/* 답변이 펼쳐져 있으면 삼각형이 위를 가리켜서 '다시 누르면 접힌다'를 암시한다 */
+.qna-row[aria-expanded='true'] .qna-arrow {
+  rotate: 180deg;
+}
+
+@keyframes qna-arrow-bob {
+  0%, 100% { transform: translateY(-1.5px); }
+  50% { transform: translateY(2.5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qna-arrow { animation: none; }
+}
+
 .qna-q {
   position: absolute;
   left: 28.37px;

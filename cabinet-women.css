@@ -45,6 +45,9 @@ body {
   width: 1920px;
   height: 1080px;
   max-width: none;
+  /* 서랍 배경을 스테이지 정중앙(960,540) 기준으로 10% 확대. 모든 서랍/파일철 페이지 공통 */
+  transform: scale(1.1);
+  transform-origin: 960px 540px;
 }
 
 /* ---------- 서랍: 라벨이 붙은 칸에만 투명 클릭영역 ---------- */
@@ -64,24 +67,25 @@ body {
     inset 0 0 60px 10px rgba(136, 66, 115, 0.671);
 }
 
+/* 서랍 배경을 10% 키운 것에 맞춰 클릭 영역도 스테이지 중심(960,540) 기준으로 같이 10% 확대 */
 .drawer--3 {
-  left: 428px;
-  top: 480px;
-  width: 352px;
-  height: 215px;
+  left: 374.8px;
+  top: 474px;
+  width: 387.2px;
+  height: 236.5px;
 }
 
 .drawer--2 {
-  left: 810px;
-  top: 695px;
-  width: 344px;
-  height: 212px;
+  left: 795px;
+  top: 710.5px;
+  width: 378.4px;
+  height: 233.2px;
 }
 .drawer--1 {
-  left: 1174px;
-  top: 265px;
-  width: 335px;
-  height: 220px;
+  left: 1195.4px;
+  top: 237.5px;
+  width: 368.5px;
+  height: 242px;
 }
 
 /* ---------- 서랍을 가리키며 위아래로 둥실거리는 화살표 ---------- */
