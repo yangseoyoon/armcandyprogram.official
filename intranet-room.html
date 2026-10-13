@@ -90,7 +90,11 @@
       document.getElementById('exitYes').addEventListener('click', () => {
         const entryPage =
           sessionStorage.getItem('intranetEntryPage') || 'main.html';
-        window.location.href = entryPage;
+        // 바로 이동하지 않고 로딩 화면(intranet-loading.html)을 거쳐서 돌아간다
+        try {
+          sessionStorage.setItem('intranetLoadingExit', entryPage);
+        } catch (e) {}
+        window.location.href = 'intranet-loading.html';
       });
     </script>
   </body>
