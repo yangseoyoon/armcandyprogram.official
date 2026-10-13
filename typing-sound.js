@@ -5,7 +5,7 @@
 (function () {
   var SRC = 'audio/typing-keyboard.mp3';
   var IDLE_MS = 350; // 이 시간 동안 입력이 없으면 타이핑이 끝난 것으로 보고 소리를 멈춘다
-  var VOLUME = 0.6;
+  var VOLUME = 1; // 브라우저 재생 볼륨의 최댓값
 
   var fields = document.querySelectorAll(
     'input:not([type]), input[type="text"], input[type="tel"], input[type="email"], input[type="search"], input[type="password"], input[type="number"], textarea'

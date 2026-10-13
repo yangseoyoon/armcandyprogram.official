@@ -19,7 +19,7 @@
   </head>
   <body>
     <div class="stage">
-      <!-- 캐비닛 배경 (교정 사례 파일철 페이지와 동일한 배경 재사용) -->
+      <!-- 캐비닛 배경 -->
       <div class="cabinet-bg" aria-hidden="true">
         <img src="images/folder-women/cabinet-bg.png" alt="" />
       </div>
@@ -27,18 +27,51 @@
       <!-- 어둠 효과 (클릭 시 서랍 닫고 돌아가기) -->
       <a class="dark-overlay" href="cabinet-women.html" aria-label="닫기"></a>
 
-      <!-- 파일철 표지: 실제 이미지는 나중에 교체 예정. 지금은 색상+텍스트로 임시 구현 -->
-      <div class="folder-front" aria-hidden="true">
-        <p class="folder-front-label">인물 목록</p>
+      <!-- 파일철 뒷면 -->
+      <div class="folder-back" aria-hidden="true">
+        <img src="images/folder-women/folder-back.png" alt="" />
       </div>
 
-      <!-- 인덱스 탭 2개 (임시 라벨: 실제 메뉴명/이미지는 나중에 교체 예정) -->
-      <a class="index-label index-label--1" href="folder-women-people-1.html">
-        <span>임시 메뉴 1</span>
+      <!-- 인덱스 탭 이미지 4개 (전부 동일 크기/위치, 장식용이라 클릭 안 됨) -->
+      <div class="index-tab index-tab--royal" aria-hidden="true">
+        <img src="images/folder-women/tab-drug-chem.png?v=2" alt="" />
+      </div>
+      <div class="index-tab index-tab--politics" aria-hidden="true">
+        <img src="images/folder-women/tab-medical.png?v=2" alt="" />
+      </div>
+      <div class="index-tab index-tab--religion" aria-hidden="true">
+        <img src="images/folder-women/tab-body-mod.png?v=2" alt="" />
+      </div>
+
+      <!-- 인덱스 라벨 4개: 실제 클릭 영역은 이 텍스트들이며, 항상 탭 이미지들 위(맨 위) 레이어에 위치 -->
+      <a
+        class="index-label index-label--royal"
+        href="folder-women-people-royal.html"
+      >
+        <span>왕실·사회</span>
       </a>
-      <a class="index-label index-label--2" href="folder-women-people-2.html">
-        <span>임시 메뉴 2</span>
+      <a
+        class="index-label index-label--politics"
+        href="folder-women-people-politics.html"
+      >
+        <span>정치·권력</span>
       </a>
+      <a
+        class="index-label index-label--religion"
+        href="folder-women-people-religion.html"
+      >
+        <span>종교·문화</span>
+      </a>
+
+      <!-- 스탬프 -->
+      <div class="stamp" aria-hidden="true">
+        <img src="images/folder-women/stamp.png" alt="" />
+      </div>
+
+      <!-- 파일철 앞면 -->
+      <div class="folder-front" aria-hidden="true">
+        <img src="images/folder-women/folder-front.png" alt="" />
+      </div>
     </div>
 
     <script src="glitch-effect.js"></script>

@@ -1,0 +1,213 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.stage {
+  position: relative;
+  flex: none;
+  width: 1920px;
+  height: 1080px;
+  background: #fff;
+  overflow: hidden;
+  transform-origin: center center;
+}
+
+/* ---------- 캐비닛 배경 ---------- */
+.cabinet-bg {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  width: 1960px;
+  height: 1080px;
+  overflow: hidden;
+}
+
+.cabinet-bg img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1093px;
+  max-width: none;
+  /* 서랍 배경을 스테이지 정중앙(960,540) 기준으로 10% 확대. 모든 서랍/파일철 페이지 공통 */
+  transform: scale(1.1);
+  transform-origin: 960px 540px;
+}
+
+/* ---------- 어둠 효과 ---------- */
+.dark-overlay {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 1920px;
+  height: 1105.48px;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+/* ---------- 열린 파일철 ---------- */
+.open-folder-bg {
+  position: absolute;
+  z-index: 2;
+  left: 206.05px;
+  top: -16.39px;
+  width: 1513.89px;
+  height: 1105.48px;
+}
+
+.open-folder-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.paperclip {
+  position: absolute;
+  z-index: 5;
+  left: 1091.6px;
+  top: 61.98px;
+  width: 19.81px;
+  height: 72.17px;
+}
+
+/* ---------- 인덱스 탭 이미지 (오른쪽, 공유 박스) ---------- */
+.index-tab {
+  position: absolute;
+  z-index: 3;
+  left: 989.29px;
+  top: 79.32px;
+  width: 648.22px;
+  height: 899.85px;
+  pointer-events: none;
+}
+
+.index-tab img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 왼쪽으로 넘어간(이미 지나온) 탭들: 좌우반전, 아래에서부터 순서대로 쌓임 */
+.index-tab--religion-left {
+  left: 291.78px;
+  top: 99.32px;
+  width: 648.22px;
+  height: 899.85px;
+  transform: scaleY(-1) rotate(180deg);
+}
+
+.index-tab--politics-left {
+  left: 297.46px;
+  top: 101.18px;
+  width: 642.54px;
+  height: 896.15px;
+  transform: scaleY(-1) rotate(180deg);
+  border-top-left-radius: 5px;
+  overflow: hidden;
+}
+
+/* ---------- 인덱스 라벨 ---------- */
+.index-label {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.index-label span {
+  display: block;
+  transform: rotate(-90deg);
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #000;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.index-label:hover span {
+  color: #888;
+}
+
+/* 오른쪽 라벨: 페이지가 바뀌어도 항상 고정되는 공용 좌표 (memory 참고) */
+.index-label--royal { left: 1594.33px; top: 708.19px; width: 37.223px; height: 126.457px; }
+
+/* 왼쪽으로 넘어간 라벨 */
+.index-label--religion-left { left: 307.74px; top: 493.19px; width: 17.223px; height: 57.708px; }
+.index-label--politics-left { left: 307.74px; top: 622.19px; width: 17.223px; height: 69.449px; }
+
+/* ---------- 파일 카드: 암페타민 / 벨라도나 안약 / 마더스 리틀 헬퍼 ----------
+   내보낸 PNG가 노드 자체 크기(611x878 @1x)와 정확히 일치해서(그림자
+   여백 없음) clip-path 크롭이 필요 없다 — 처벌·강제 페이지 카드들과
+   완전히 같은 포맷이라 위치도 그쪽과 동일한 값(left:333/971,
+   top:113/84)을 써야 한다. 641x908짜리 코르셋/전족용 값(320/960,
+   100/72)을 잘못 재사용했던 걸 바로잡음. */
+.file-card-flat-wrap {
+  position: absolute;
+  z-index: 4;
+  width: 611px;
+  height: 878px;
+  filter: drop-shadow(4px 4px 3px rgba(0, 0, 0, 0.18));
+  pointer-events: none;
+}
+
+.file-card-flat {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.file-card-flat-wrap--placeholder-left {
+  left: 333px;
+  top: 113px;
+  transform: rotate(-2deg);
+}
+
+.file-card-flat-wrap--placeholder-right {
+  left: 971px;
+  top: 84px;
+  transform: rotate(1deg);
+}
+
+/* 카드 이미지에 찍힌 "이전 장"/"다음 장" 글자 위에 얹는 투명 클릭 영역.
+   wrap이 이미 회전돼 있으므로 그 안의 로컬 좌표(카드 자체 기준)로 두면
+   회전과 함께 따라간다. */
+.page-turn {
+  position: absolute;
+  top: 838.5px;
+  width: 66px;
+  height: 40px;
+  pointer-events: auto;
+}
+
+.page-turn--prev {
+  left: 10px;
+}
+
+.page-turn--next {
+  left: 535px;
+}

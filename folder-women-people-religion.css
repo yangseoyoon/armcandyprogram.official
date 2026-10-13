@@ -1,0 +1,221 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.stage {
+  position: relative;
+  flex: none;
+  width: 1920px;
+  height: 1080px;
+  background: #fff;
+  overflow: hidden;
+  transform-origin: center center;
+}
+
+/* ---------- 캐비닛 배경 ---------- */
+.cabinet-bg {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  width: 1960px;
+  height: 1080px;
+  overflow: hidden;
+}
+
+.cabinet-bg img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1093px;
+  max-width: none;
+  /* 서랍 배경을 스테이지 정중앙(960,540) 기준으로 10% 확대. 모든 서랍/파일철 페이지 공통 */
+  transform: scale(1.1);
+  transform-origin: 960px 540px;
+}
+
+/* ---------- 어둠 효과 (열린 상태에서는 클릭 불가) ---------- */
+.dark-overlay {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 1920px;
+  height: 1105.48px;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+/* ---------- 열린 파일철 ---------- */
+/* .open-folder-wrap 자체는 좌표 기준점이 아니라 그냥 묶음 컨테이너.
+   모든 자식은 .stage 기준 절대좌표를 그대로 사용한다. */
+
+.open-folder-bg {
+  position: absolute;
+  z-index: 2;
+  left: 206.05px;
+  top: -16.39px;
+  width: 1513.89px;
+  height: 1105.48px;
+  display: block;
+  cursor: pointer;
+}
+
+.open-folder-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.paperclip {
+  position: absolute;
+  z-index: 5;
+  left: 1091.6px;
+  top: 61.98px;
+  width: 19.81px;
+  height: 72.17px;
+}
+
+/* ---------- 인덱스 탭 이미지 ---------- */
+.index-tab {
+  position: absolute;
+  z-index: 3;
+  left: 989.29px;
+  top: 79.32px;
+  width: 648.22px;
+  height: 899.85px;
+  pointer-events: none;
+}
+
+.index-tab img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.index-tab--politics {
+  top: 81.18px;
+  width: 642.54px;
+  height: 896.15px;
+}
+
+/* ---------- 인덱스 라벨 ---------- */
+.index-label {
+  position: absolute;
+  z-index: 5;
+  left: 1594.33px;
+  width: 37.223px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.index-label span {
+  display: block;
+  transform: rotate(-90deg);
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #000;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.index-label:hover span {
+  color: #888;
+}
+
+.index-label--royal {
+  top: 708.19px;
+  height: 126.457px;
+}
+.index-label--politics {
+  top: 581.15px;
+  height: 109.449px;
+}
+.index-label--religion {
+  top: 452.15px;
+  height: 97.708px;
+}
+
+/* ---------- 파일 카드: 종이 코르셋 / 전족 ----------
+텍스트/사진/하이라이트를 각각 코드로 재현하는 대신 Figma에서 카드 전체를
+2x로 통짜 내보내 하나의 이미지로 사용한다(폰트 렌더링·서브픽셀 테두리
+차이로 어긋날 여지가 없음). Figma 내보내기가 box-shadow 여백까지 불투명
+픽셀로 포함해서(1282x1816 @2x), 그 여백이 폴더 배경 위에서 "종이가 한 장
+더 있는 것"처럼 보이는 사각 테두리를 만든다 — clip-path로 그 여백만
+잘라내고, 잘려나간 만큼 left/top을 다시 맞췄다(캔버스 픽셀 실측 기준:
+   위/왼쪽 12.5px, 오른쪽/아래 18.5px @1x). */
+.file-card-flat-wrap {
+  position: absolute;
+  z-index: 4;
+  width: 641px;
+  height: 908px;
+  /* 파일철 위에 올라가는 모든 자료(사진/문서) 카드의 고정 드롭섀도우 값.
+     새 카드를 추가할 때도 이 값을 그대로 사용할 것. */
+  filter: drop-shadow(4px 4px 3px rgba(0, 0, 0, 0.18));
+  pointer-events: none;
+}
+
+.file-card-flat {
+  display: block;
+  width: 100%;
+  height: 100%;
+  clip-path: inset(12.5px 18.5px 18.5px 12.5px);
+}
+
+.file-card-flat-wrap--corset,
+.file-card-flat-wrap--fgm {
+  left: 333px;
+  top: 113px;
+  transform: rotate(-2deg);
+}
+
+.file-card-flat-wrap--footbinding,
+.file-card-flat-wrap--breastironing {
+  left: 971px;
+  top: 84px;
+  transform: rotate(1deg);
+}
+
+/* 카드 이미지에 찍힌 "이전 장"/"다음 장" 글자 위에 얹는 투명 클릭 영역.
+   wrap(641x908) 안의 카드는 clip-path로 잘린 만큼(12.5px) 안쪽에서 시작하므로
+   611x878 카드 기준 좌표(top 838.5, prev 10, next 535)에 12.5px씩 더한 값. */
+.page-turn {
+  position: absolute;
+  top: 851px;
+  width: 66px;
+  height: 40px;
+  pointer-events: auto;
+}
+
+.page-turn--prev {
+  left: 22.5px;
+}
+
+.page-turn--next {
+  left: 547.5px;
+}

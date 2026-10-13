@@ -486,6 +486,8 @@ body {
   width: 1220px;
   height: 840px;
   object-fit: cover;
+  /* 썸네일(poster)을 기본(가운데: -37.5px)보다 10px 위로. 영상도 같은 위치로 재생돼서 재생 시작할 때 화면이 튀지 않는다 */
+  object-position: 50% -47.5px;
   cursor: pointer;
 }
 

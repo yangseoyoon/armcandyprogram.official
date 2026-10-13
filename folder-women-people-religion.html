@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>종교·문화 | ARM CANDY PROGRAM</title>
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+
+    <link rel="stylesheet" href="folder-women-people-religion.css" />
+    <link rel="stylesheet" href="glitch-effect.css" />
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="cursor.css" />
+    <script src="cursor.js" defer></script>
+  </head>
+  <body>
+    <div class="stage">
+      <!-- 캐비닛 배경 -->
+      <div class="cabinet-bg" aria-hidden="true">
+        <img src="images/folder-women-bodymod/cabinet-bg.png" alt="" />
+      </div>
+
+      <!-- 어둠 효과 -->
+      <a class="dark-overlay" href="folder-women-people.html" aria-label="닫기"></a>
+
+      <!-- 열린 파일철 -->
+      <div class="open-folder-wrap">
+        <a class="open-folder-bg" href="folder-women-people.html" aria-label="닫기">
+          <img src="images/folder-women-bodymod/open-folder.png" alt="" />
+        </a>
+
+        <img
+          class="paperclip"
+          src="images/folder-women-bodymod/paperclip.png"
+          alt=""
+          aria-hidden="true"
+        />
+
+        <!-- 인덱스 탭 이미지 4개 -->
+        <div class="index-tab index-tab--royal" aria-hidden="true">
+          <img src="images/folder-women-bodymod/tab-drug-chem.png?v=2" alt="" />
+        </div>
+        <div class="index-tab index-tab--politics" aria-hidden="true">
+          <img src="images/folder-women-bodymod/tab-medical.png?v=2" alt="" />
+        </div>
+        <div class="index-tab index-tab--religion" aria-hidden="true">
+          <img src="images/folder-women-bodymod/tab-body-mod.png?v=2" alt="" />
+        </div>
+
+        <!-- 인덱스 라벨 4개 -->
+        <a
+          class="index-label index-label--royal"
+          href="folder-women-people-royal.html"
+        >
+          <span>왕실·사회</span>
+        </a>
+        <a
+          class="index-label index-label--politics"
+          href="folder-women-people-politics.html"
+        >
+          <span>정치·권력</span>
+        </a>
+        <a
+          class="index-label index-label--religion index-label--active"
+          href="folder-women-people-religion.html"
+        >
+          <span>종교·문화</span>
+        </a>
+
+        <!-- 파일 카드: 신사임당 / 성모 마리아 (Figma 2320:3229, 2583:153을 2x로 내보낸 이미지 사용)
+             clip-path와 filter(drop-shadow)를 같은 요소에 같이 걸면 일부
+             브라우저가 그림자까지 clip-path로 잘라버리는 문제가 있어서,
+             바깥 wrap에는 filter만, 안쪽 img에는 clip-path만 따로 둔다. -->
+        <div class="file-card-flat-wrap file-card-flat-wrap--corset">
+          <img
+            class="file-card-flat"
+            src="images/folder-women-people-religion/card-sinsaimdang@2x.png?v=2"
+            alt="신사임당 자료 카드"
+          />
+          <!-- 카드에 찍힌 '이전 장' 글자 위의 클릭 영역: 이 앞에는 이전 페이지가 없어서 인물 목록(파일철)으로 돌아간다 -->
+          <a
+            class="page-turn page-turn--prev"
+            href="folder-women-people.html"
+            aria-label="이전 장"
+          ></a>
+        </div>
+        <div class="file-card-flat-wrap file-card-flat-wrap--footbinding">
+          <img
+            class="file-card-flat"
+            src="images/folder-women-people-religion/card-maria@2x.png?v=3"
+            alt="성모 마리아 자료 카드"
+          />
+          <a
+            class="page-turn page-turn--next"
+            href="folder-women-people-religion-2.html"
+            aria-label="다음 장"
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <script src="glitch-effect.js"></script>
+    <script src="folder-scale.js"></script>
+  </body>
+</html>

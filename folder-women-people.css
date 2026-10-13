@@ -64,49 +64,61 @@ body {
   cursor: pointer;
 }
 
-/* ---------- 파일철 표지 (임시: 실제 이미지는 나중에 교체) ---------- */
-.folder-front {
+/* ---------- 파일철 뒷면 ---------- */
+.folder-back {
   position: absolute;
   z-index: 2;
   left: 607.25px;
   top: 53.6px;
   width: 745.5px;
   height: 972.79px;
-  background: linear-gradient(to bottom, #ffb3e0, #ff8bd4);
-  border: 3px solid #000;
-  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
-  display: flex;
-  justify-content: center;
+}
+
+.folder-back img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- 인덱스 탭 이미지 (전부 동일 크기·위치로 겹쳐서 배치) ---------- */
+.index-tab {
+  position: absolute;
+  z-index: 3;
+  left: 675.39px;
+  top: 95.3px;
+  width: 648.22px;
+  height: 899.85px;
   pointer-events: none;
 }
 
-.folder-front-label {
-  margin: 90px 30px 0;
-  padding: 16px 30px;
-  height: fit-content;
-  background: #fff;
-  border: 2px solid #000;
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 700;
-  font-size: 28px;
-  color: #000;
-  text-align: center;
+.index-tab img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* ---------- 인덱스 탭 2개 (임시 구현: 실제 탭 이미지/문구는 나중에 교체) ---------- */
+/* clip-path 불필요: 각 탭 이미지는 자기 노치 부분만 불투명하고 나머지는
+   투명(PNG alpha)이라 4개를 그대로 겹쳐도 서로를 가리지 않는다. */
+
+/* 정치·권력(구 의학적치료) 원본만 종횡비가 미세하게 달라(2602x3629 vs 2625x3644) object-fit:cover
+   스케일 시 좌측 경계가 1px 어긋나 보여서 보정. */
+.index-tab--politics {
+  transform: translateX(-5px);
+}
+
+/* ---------- 인덱스 라벨 (실제 클릭 영역, 탭 이미지들보다 항상 위) ---------- */
 .index-label {
   position: absolute;
-  z-index: 3;
-  left: 1362.75px;
-  width: 32px;
+  z-index: 4;
+  left: 1290.48px;
+  width: 17.223px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   text-decoration: none;
-  background: #efefef;
-  border: 1px solid #000;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
 }
 
 .index-label span {
@@ -114,7 +126,7 @@ body {
   transform: rotate(-90deg);
   font-family: 'Pretendard', sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 15px;
   color: #000;
   white-space: nowrap;
   transition: color 0.15s ease;
@@ -124,11 +136,59 @@ body {
   color: #888;
 }
 
-.index-label--1 {
-  top: 320px;
-  height: 160px;
+.index-label--royal {
+  top: 734.16px;
+  height: 106.457px;
 }
-.index-label--2 {
-  top: 520px;
-  height: 160px;
+.index-label--politics {
+  top: 618.16px;
+  height: 69.449px;
+}
+.index-label--religion {
+  top: 489.16px;
+  height: 57.708px;
+}
+
+/* ---------- 스탬프 ---------- */
+.stamp {
+  position: absolute;
+  z-index: 4;
+  left: 1094.67px;
+  top: 200.94px;
+  width: 195.76px;
+  height: 147.55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.stamp img {
+  display: block;
+  width: 177.93px;
+  height: 118.54px;
+  transform: rotate(-9.97deg);
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+}
+
+/* ---------- 파일철 앞면 ---------- */
+.folder-front {
+  position: absolute;
+  z-index: 5;
+  left: 607.25px;
+  top: 53.6px;
+  width: 671.35px;
+  height: 972.79px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.folder-front img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 111.05%;
+  height: 100%;
+  max-width: none;
 }
