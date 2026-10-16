@@ -459,7 +459,7 @@ body {
 /* 이미지 원본 크기(1920x1080) 그대로, 섹션 정중앙에 배치. */
 .screen2-monitor {
   position: absolute;
-  z-index: 2; /* 영상(.screen2-video, z-index 1)보다 앞 */
+  z-index: 2; /* 영상(.screen2-video, z-index 3)보다 뒤 */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -474,14 +474,15 @@ body {
    클릭하면 소리와 함께 재생, 더블클릭하면 800x600 크기로 확대 */
 .screen2-video {
   position: absolute;
-  z-index: 1;
-  left: 354px; /* 섹션(top 1078.05) 안 좌표: 페이지 기준 top 1181px */
-  top: 102.95px;
-  width: 1220px;
-  height: 840px;
+  z-index: 3; /* 모니터 이미지(.screen2-monitor, z-index 2)보다 앞. 영상이 프레임 위로 올라온다 */
+  left: 356px; /* 섹션(top 1078.05) 안 좌표: 페이지 기준 top 1185px. 가로/세로 10px씩 키운 뒤 왼쪽 3px, 위로 1px 이동 */
+  top: 106.95px;
+  width: 1210px;
+  height: 830px;
   object-fit: cover;
-  /* 썸네일(poster)을 기본(가운데: -37.5px)보다 10px 위로. 영상도 같은 위치로 재생돼서 재생 시작할 때 화면이 튀지 않는다 */
-  object-position: 50% -47.5px;
+  /* 썸네일(poster)을 기본(가운데: -38.75px)보다 10px 위로. 영상도 같은 위치로 재생돼서 재생 시작할 때 화면이 튀지 않는다 */
+  object-position: 50% -48.75px;
+  border-radius: 20px; /* 영상/썸네일 모서리 둥글게(확대했을 때는 아래 .is-enlarged에서 0) */
   cursor: pointer;
 }
 
@@ -489,7 +490,7 @@ body {
    위치: 모니터 화면(구멍) 가운데 가로, 영상 위쪽 빈 분홍 영역 */
 .screen2-hint {
   position: absolute;
-  z-index: 3;
+  z-index: 4; /* 영상(z-index 3) 위 */
   left: 964px;
   top: 195px;
   margin: 0;

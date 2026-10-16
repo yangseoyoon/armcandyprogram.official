@@ -382,7 +382,7 @@
       <button type="button" class="component-object component-object--manualbook" data-modal="manualModalOverlay" aria-label="매뉴얼 북 설명 보기">
         <img src="images/components/manualbook.png" alt="" />
       </button>
-      <button type="button" class="component-object component-object--call" data-modal="callVoiceModalOverlay" aria-label="전화기 안내음성 듣기">
+      <button type="button" class="component-object component-object--call" data-modal="callVideoModalOverlay" aria-label="전화기 영상 보기">
         <img src="images/components/call.png" alt="" />
       </button>
 
@@ -602,8 +602,8 @@
             </div>
             <p class="manual-modal-desc">
               ARM CANDY PROGRAM™의 구조와 운영 체계를 소개하는 공식 프로그램
-              가이드북이다. 프로그램의 철학과 교정 과정, 프로그램에 관한 설명 등
-              ARM CANDY PROGRAM™의 관한 전반적인 설명이 담겨있다.
+              가이드북입니다. 프로그램의 철학과 교정 과정, 프로그램에 관한 설명 등
+              ARM CANDY PROGRAM™에 관한 전반적인 설명이 담겨있습니다.
             </p>
           </div>
         </div>
@@ -622,9 +622,9 @@
             </div>
             <p class="manual-modal-desc">
               교정 대상자가 4주간 프로그램을 수행하기 위해 사용하는 교정 매뉴얼
-              북이다. 각 유형별 교정 목표와 주차별 행동 지침 등을 수록하여
+              북입니다. 각 유형별 교정 목표와 주차별 행동 지침 등을 수록하여
               대상자가 스스로 자신의 행동과 외형을 점검하고 프로그램을 단계적으로
-              수행할 수 있도록 구성되어 있다.
+              수행할 수 있도록 구성되어 있습니다.
             </p>
           </div>
         </div>
@@ -642,25 +642,20 @@
           </div>
         </div>
 
-        <!-- 전화기: 안내음성 메세지 팝업 -->
-        <div class="product-modal-overlay" id="callVoiceModalOverlay">
-          <div class="call-modal-box">
-            <div class="call-modal-pink-fade" aria-hidden="true"></div>
-            <div class="call-modal-topbar">
-              <span>안내음성 메세지</span>
-              <button type="button" class="call-modal-close" aria-label="닫기">
-                <img src="images/components/call-modal-close.svg" alt="" />
+        <!-- 전화기: 영상 팝업 창 (call-video, 소리와 함께 재생) -->
+        <div class="product-modal-overlay" id="callVideoModalOverlay">
+          <div class="monitor-video-box">
+            <div class="manual-modal-topbar">
+              <span>call</span>
+              <button type="button" class="manual-modal-close" aria-label="닫기">
+                <img src="images/shop/product-modal-close.svg" alt="" />
               </button>
             </div>
-            <p class="call-modal-status">재생 중...</p>
-            <div class="call-modal-photo">
-              <img src="images/components/call-icon.svg" alt="" />
-            </div>
+            <video id="callVideo" src="images/main/call-video.mp4" playsinline preload="none"></video>
           </div>
         </div>
       </div>
     </div>
-    <audio id="callVoiceAudio" src="audio/call-voice.mp3" preload="none"></audio>
 
     <!-- 인트라넷 접속 안내 팝업: .stage 바깥(뷰포트 기준 고정)에 둬야 긴 페이지에서도 항상 화면 중앙에 뜬다 -->
     <div class="intranet-modal" aria-hidden="true">
