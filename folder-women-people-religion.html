@@ -94,6 +94,13 @@
             src="images/folder-women-people-religion/card-maria@2x.png?v=3"
             alt="성모 마리아 자료 카드"
           />
+          <!-- 카드 아래쪽 노란 메모지(Figma 2602:938): 누르면 크게 보인다 -->
+          <button
+            type="button"
+            class="note-hotspot note-hotspot--ecce"
+            data-note-zoom="noteEcceOverlay"
+            aria-label="메모지 크게 보기"
+          ></button>
           <a
             class="page-turn page-turn--next"
             href="folder-women-people-religion-2.html"
@@ -101,9 +108,15 @@
           ></a>
         </div>
       </div>
+
+      <!-- 메모지 확대 (Figma 2602:938). 아무 곳이나 누르면 닫힌다 -->
+      <div class="note-overlay" id="noteEcceOverlay" aria-hidden="true">
+        <img src="images/folder-women-people-religion/note-ecce-ancilla@4x.png" alt="Ecce ancilla Domini, fiat mihi secundum verbum tuum. 보십시오, 저는 주님의 종입니다. 말씀하신 대로 저에게 이루어지기를 바랍니다." />
+      </div>
     </div>
 
     <script src="glitch-effect.js"></script>
     <script src="folder-scale.js"></script>
+    <script src="folder-note-zoom.js"></script>
   </body>
 </html>
