@@ -331,6 +331,32 @@ body {
   object-fit: cover;
 }
 
+/* 상품에 마우스를 올리면 살짝 커진다(1.1배).
+   .is-hover는 CRT 색수차 복제 레이어(.crt-layer)용: shop-hover.js가 원본의 호버 상태를 복제본에도 똑같이 걸어 준다. */
+.product {
+  transition: transform 0.18s ease;
+}
+
+.product:hover,
+.product.is-hover {
+  transform: scale(1.1);
+}
+
+/* 바비 보톡스는 .product 자체가 pointer-events: none 이라 안쪽 이미지를 직접 키운다(원래의 중앙정렬/회전은 그대로) */
+.product--botox:hover,
+.product--botox.is-hover {
+  transform: none;
+}
+
+.product--botox img {
+  transition: transform 0.18s ease;
+}
+
+.product--botox img:hover,
+.product--botox.is-hover img {
+  transform: translate(-50%, -50%) rotate(-132.35deg) scale(1.1);
+}
+
 /* ---------- 상품 상세 팝업 ---------- */
 .product-modal-overlay {
   position: absolute;
