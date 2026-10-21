@@ -8,7 +8,7 @@
   --card-green: #c3fbb2;
   --accent-pink: #ff1fac;
 
-  --font-futura-extrabold: 'Futura PT Extra Bold', 'Futura PT', sans-serif;
+  --font-futura-extrabold: 'Futura PT Extra Bold', 'Futura PT Bold', 'Futura PT', sans-serif;
   --font-futura-bold: 'Futura PT Bold', 'Futura PT', sans-serif;
   --font-futura-heavy: 'Futura PT Demi', 'Futura PT', sans-serif;
   --font-futura-demi: 'Futura PT Demi', 'Futura PT', sans-serif;
@@ -559,7 +559,7 @@ body {
   top: 466.04px;
   transform: translateX(-50%);
   margin: 0;
-  font-family: var(--font-futura-bold);
+  font-family: var(--font-futura-extrabold);
   font-size: 40px;
   color: #ffcb00;
   text-shadow: 4px 4px 0 #000;

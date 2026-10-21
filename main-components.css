@@ -283,7 +283,7 @@
   margin: 0;
   white-space: nowrap;
   /* 'Futura PT Bold Italic'은 fonts.css에서 이미 기울어진 글꼴에 이어 둔 이름이라 font-style은 normal */
-  font-family: var(--font-futura-bold-italic);
+  font-family: var(--font-futura-extrabold-italic);
   font-style: normal;
   font-weight: 700;
   font-size: 64px;

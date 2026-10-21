@@ -11,6 +11,9 @@
   --font-futura-medium: 'Futura PT Medium', 'Futura PT', sans-serif;
   --font-futura-bold: 'Futura PT Bold', 'Futura PT', sans-serif;
   --font-futura-bold-italic: 'Futura PT Bold Italic', 'Futura PT', sans-serif;
+  /* 타이틀용: Bold보다 한 단계 두꺼운 Extra Bold (설치 안 된 환경에선 Bold로 대체) */
+  --font-futura-extrabold: 'Futura PT Extra Bold', 'Futura PT Bold', 'Futura PT', sans-serif;
+  --font-futura-extrabold-italic: 'Futura PT Extra Bold Italic', 'Futura PT Bold Italic', 'Futura PT', sans-serif;
   --font-futura-demi-italic: 'Futura PT Demi Italic', 'Futura PT', sans-serif;
   --font-pixel: 'NeoDunggeunmo Pro', 'NeoDunggeunmoPro', monospace;
   --font-body: 'Pretendard', sans-serif;
@@ -215,7 +218,7 @@ body {
   top: 183.7px; /* Frame 362(y=136) + 47.7 */
   width: 1768.45px;
   margin: 0;
-  font-family: var(--font-futura-bold);
+  font-family: var(--font-futura-extrabold);
   font-weight: 700;
   font-size: 70px;
   line-height: 1;
@@ -594,7 +597,7 @@ body {
   width: 630px;
   /* 'Futura PT Bold Italic'은 fonts.css에서 설치된 Bold Oblique(이미 기울어진 글꼴)에 이어 둔 이름이다.
      그래서 font-style: italic을 또 주면 한 번 더 기울어진다. */
-  font-family: var(--font-futura-bold-italic);
+  font-family: var(--font-futura-extrabold-italic);
   font-style: normal;
   font-weight: 700;
   font-size: 64px;
@@ -670,7 +673,7 @@ body {
 
 .feature-card .feature-title {
   top: 21.07px;
-  font-family: var(--font-futura-bold);
+  font-family: var(--font-futura-extrabold);
   font-style: normal;
   font-weight: 700;
   font-size: 26px;
@@ -922,7 +925,7 @@ body {
   width: 1920px;
   /* 'Futura PT Bold Italic'은 fonts.css에서 설치된 Bold Oblique(이미 기울어진 글꼴)에 이어 둔 이름이다.
      그래서 font-style: italic을 또 주면 한 번 더 기울어진다. */
-  font-family: var(--font-futura-bold-italic);
+  font-family: var(--font-futura-extrabold-italic);
   font-style: normal;
   font-weight: 700;
   font-size: 64px;
@@ -1069,7 +1072,7 @@ body {
   height: 81px;
   /* 'Futura PT Bold Italic'은 fonts.css에서 설치된 Bold Oblique(이미 기울어진 글꼴)에 이어 둔 이름이다.
      그래서 font-style: italic을 또 주면 한 번 더 기울어진다. */
-  font-family: var(--font-futura-bold-italic);
+  font-family: var(--font-futura-extrabold-italic);
   font-style: normal;
   font-weight: 700;
   font-size: 64px;
@@ -1256,7 +1259,7 @@ body {
   z-index: 2;
   top: 269px;
   margin: 0;
-  font-family: var(--font-futura-bold);
+  font-family: var(--font-futura-extrabold);
   font-style: normal;
   font-weight: 700;
   font-size: 36px;
@@ -1326,7 +1329,7 @@ body {
   width: 567px;
   /* 'Futura PT Bold Italic'은 fonts.css에서 설치된 Bold Oblique(이미 기울어진 글꼴)에 이어 둔 이름이다.
      그래서 font-style: italic을 또 주면 한 번 더 기울어진다. */
-  font-family: var(--font-futura-bold-italic);
+  font-family: var(--font-futura-extrabold-italic);
   font-style: normal;
   font-weight: 700;
   font-size: 64px;
