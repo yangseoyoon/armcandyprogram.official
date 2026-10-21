@@ -13,7 +13,10 @@ try {
 const REDIRECT_TARGET = exitTarget || 'intranet-connected.html';
 
 if (exitTarget) {
-  document.querySelector('.loading-text').textContent = '돌아가는 중입니다...';
+  // glitch-effect.js가 이미 화면을 복제해 둔 상태라, 복제본(색수차 레이어) 문구까지 같이 바꿔야 글자가 겹치지 않는다
+  document.querySelectorAll('.loading-text').forEach((el) => {
+    el.textContent = '돌아가는 중입니다...';
+  });
 }
 
 // 진행바가 채워지는 시간을 로딩 시간과 똑같이 맞춘다.
