@@ -223,3 +223,18 @@ body {
 .page-turn--next {
   left: 535px;
 }
+
+/* ---------- 카드 위 메모지: 누르면 크게 (공용 스타일은 folder-note-zoom.css) ----------
+   클릭 영역은 카드 이미지 속 노란 메모지 자리(카드 wrap 기준 좌표).
+   확대 이미지 폭은 모든 메모지가 같은 배율로 보이도록 맞춘 값. */
+/* 측천무후 카드(1페이지 오른쪽, wrap 611x878) */
+.note-hotspot--wuzetian {
+  left: 41.46px;
+  top: 696.21px;
+  width: 242.59px;
+  height: 141.66px;
+}
+
+.note-overlay--wuzetian img {
+  width: 1000px;
+}

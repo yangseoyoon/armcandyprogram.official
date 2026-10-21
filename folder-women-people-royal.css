@@ -211,3 +211,40 @@ body {
 .page-turn--next {
   left: 535px;
 }
+
+/* ---------- 카드 위 메모지: 누르면 크게 (공용 스타일은 folder-note-zoom.css) ----------
+   클릭 영역은 카드 이미지 속 노란 메모지 자리(카드 wrap 기준 좌표).
+   확대 이미지 폭은 모든 메모지가 같은 배율로 보이도록 맞춘 값. */
+/* wrap 611x878 기준. 장희빈: 1페이지 왼쪽 / 마리 앙투아네트: 2페이지 왼쪽 / 엘리자베트: 2페이지 오른쪽 */
+.note-hotspot--janghuibin {
+  left: 134.88px;
+  top: 703.95px;
+  width: 220.67px;
+  height: 141.66px;
+}
+
+.note-hotspot--marie-antoinette {
+  left: 346.01px;
+  top: 675.42px;
+  width: 216.38px;
+  height: 133.44px;
+}
+
+.note-hotspot--elisabeth {
+  left: 44.32px;
+  top: 657.05px;
+  width: 263.56px;
+  height: 189.04px;
+}
+
+.note-overlay--janghuibin img {
+  width: 920px;
+}
+
+.note-overlay--marie-antoinette img {
+  width: 899px;
+}
+
+.note-overlay--elisabeth img {
+  width: 1088px;
+}

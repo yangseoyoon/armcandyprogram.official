@@ -220,20 +220,11 @@ body {
   left: 547.5px;
 }
 
-/* ---------- 카드 위 메모지: 누르면 크게 ---------- */
-/* 성모 마리아 카드(wrap 641x908, 카드는 12.5px 안쪽에서 시작) 안의 노란 메모지 자리.
+/* ---------- 카드 위 메모지: 누르면 크게 (공용 스타일은 folder-note-zoom.css) ----------
+   클릭 영역은 카드 이미지 속 노란 메모지 자리(카드 wrap 기준 좌표).
+   확대 이미지 폭은 모든 메모지가 같은 배율로 보이도록 맞춘 값. */
+/* 성모 마리아 카드(wrap 641x908, 카드는 12.5px 안쪽에서 시작) 안의 메모지.
    Figma 메모지 Frame 330: 카드 기준 x 49.36, y 682, 278.96 x 167.58 */
-.note-hotspot {
-  position: absolute;
-  z-index: 5;
-  margin: 0;
-  padding: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  pointer-events: auto; /* wrap은 pointer-events: none 이라 여기서만 다시 켠다 */
-}
-
 .note-hotspot--ecce {
   left: 61.86px;
   top: 694.5px;
@@ -241,24 +232,18 @@ body {
   height: 167.58px;
 }
 
-.note-overlay {
-  position: absolute;
-  z-index: 50;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.6);
-  cursor: pointer;
+/* 잔 다르크 카드(religion-2 왼쪽) 서명 메모지 */
+.note-hotspot--jeanne-darc {
+  left: 414.5px;
+  top: 715.5px;
+  width: 166px;
+  height: 161.5px;
 }
 
-.note-overlay.is-open {
-  display: flex;
+.note-overlay--ecce img {
+  width: 1081px;
 }
 
-.note-overlay img {
-  display: block;
-  width: 1100px;
-  height: auto;
-  filter: drop-shadow(8px 8px 10px rgba(0, 0, 0, 0.35));
+.note-overlay--jeanne-darc img {
+  width: 665px;
 }

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
     <link rel="stylesheet" href="folder-women-people-royal.css" />
+    <link rel="stylesheet" href="folder-note-zoom.css" />
     <link rel="stylesheet" href="glitch-effect.css" />
     <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="cursor.css" />
@@ -65,6 +66,13 @@
           src="images/folder-women-people-royal/card-janghuibin@2x.png?v=4"
           alt="장희빈 자료 카드"
         />
+        <!-- 카드 아래 노란 메모지: 누르면 크게 보인다 -->
+        <button
+          type="button"
+          class="note-hotspot note-hotspot--janghuibin"
+          data-note-zoom="noteJanghuibinOverlay"
+          aria-label="장희빈 카드 메모지 크게 보기"
+        ></button>
         <a
           class="page-turn page-turn--prev"
           href="folder-women-people-politics-2.html"
@@ -84,9 +92,14 @@
         ></a>
       </div>
 
+      <!-- 장희빈 카드 메모지 확대. 아무 곳이나 누르면 닫힌다 -->
+      <div class="note-overlay note-overlay--janghuibin" id="noteJanghuibinOverlay" aria-hidden="true">
+        <img src="images/folder-women-people-royal/note-janghuibin@2x.png" alt="내 폐비의 절을 받고 말리라" />
+      </div>
     </div>
 
     <script src="glitch-effect.js"></script>
     <script src="folder-scale.js"></script>
+    <script src="folder-note-zoom.js"></script>
   </body>
 </html>

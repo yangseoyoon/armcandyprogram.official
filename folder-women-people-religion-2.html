@@ -12,6 +12,7 @@
     />
 
     <link rel="stylesheet" href="folder-women-people-religion.css" />
+    <link rel="stylesheet" href="folder-note-zoom.css" />
     <link rel="stylesheet" href="glitch-effect.css" />
     <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="cursor.css" />
@@ -78,6 +79,13 @@
             src="images/folder-women-people-religion/card-jeanne-darc@2x.png?v=4"
             alt="잔 다르크 자료 카드"
           />
+          <!-- 카드 아래 노란 메모지: 누르면 크게 보인다 -->
+          <button
+            type="button"
+            class="note-hotspot note-hotspot--jeanne-darc"
+            data-note-zoom="noteJeanneOverlay"
+            aria-label="잔 다르크 카드 메모지 크게 보기"
+          ></button>
           <a
             class="page-turn page-turn--prev"
             href="folder-women-people-religion.html"
@@ -98,9 +106,15 @@
           ></a>
         </div>
       </div>
+
+      <!-- 잔 다르크 카드 메모지 확대. 아무 곳이나 누르면 닫힌다 -->
+      <div class="note-overlay note-overlay--jeanne-darc" id="noteJeanneOverlay" aria-hidden="true">
+        <img src="images/folder-women-people-religion/note-jeanne-darc@2x.png" alt="Jehanne — 잔 다르크의 서명" />
+      </div>
     </div>
 
     <script src="glitch-effect.js"></script>
     <script src="folder-scale.js"></script>
+    <script src="folder-note-zoom.js"></script>
   </body>
 </html>

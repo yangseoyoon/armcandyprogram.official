@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
     <link rel="stylesheet" href="folder-women-people-politics.css" />
+    <link rel="stylesheet" href="folder-note-zoom.css" />
     <link rel="stylesheet" href="glitch-effect.css" />
     <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="cursor.css" />
@@ -74,12 +75,24 @@
           src="images/folder-women-people-politics/card-wuzetian@2x.png?v=4"
           alt="측천무후 자료 카드"
         />
+        <!-- 카드 아래 노란 메모지: 누르면 크게 보인다 -->
+        <button
+          type="button"
+          class="note-hotspot note-hotspot--wuzetian"
+          data-note-zoom="noteWuzetianOverlay"
+          aria-label="측천무후 카드 메모지 크게 보기"
+        ></button>
         <a class="page-turn page-turn--next" href="folder-women-people-politics-2.html" aria-label="다음 장"></a>
       </div>
 
+      <!-- 측천무후 카드 메모지 확대. 아무 곳이나 누르면 닫힌다 -->
+      <div class="note-overlay note-overlay--wuzetian" id="noteWuzetianOverlay" aria-hidden="true">
+        <img src="images/folder-women-people-politics/note-wuzetian@2x.png" alt="말이 말을 듣지 않으면 쇠채찍으로 때리고, 그래도 듣지 않으면 쇠망치로 머리를 내리치며, 끝까지 복종하지 않으면 비수로 목을 베어버리면 됩니다" />
+      </div>
     </div>
 
     <script src="glitch-effect.js"></script>
     <script src="folder-scale.js"></script>
+    <script src="folder-note-zoom.js"></script>
   </body>
 </html>

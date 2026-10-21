@@ -1,0 +1,35 @@
+/* 카드 위 노란 메모지(포스트잇) 확대 보기 — folder-note-zoom.js 와 같이 쓴다.
+   - .note-hotspot: 카드 wrap(pointer-events: none) 안에 얹는 투명 클릭 영역. 위치는 각 페이지 CSS에서 지정
+   - .note-overlay: 어두운 배경 + 큰 메모지 이미지. 메모지 PNG는 배경이 투명이라 그림자는 여기서 준다.
+     이미지 폭은 각 페이지 CSS의 .note-overlay--이름 img 에서 지정 */
+.note-hotspot {
+  position: absolute;
+  z-index: 5;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  pointer-events: auto; /* wrap은 pointer-events: none 이라 여기서만 다시 켠다 */
+}
+
+.note-overlay {
+  position: absolute;
+  z-index: 50;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.note-overlay.is-open {
+  display: flex;
+}
+
+.note-overlay img {
+  display: block;
+  height: auto;
+  filter: drop-shadow(8px 8px 10px rgba(0, 0, 0, 0.35));
+}
